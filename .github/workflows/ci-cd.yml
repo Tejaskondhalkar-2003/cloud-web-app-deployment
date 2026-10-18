@@ -16,12 +16,32 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - name: Check application files
         run: |
           test -f app/index.html
           test -f app/style.css
           test -f app/script.js
           echo "Application files verified"
+
+      - name: Test JavaScript syntax
+        run: node --check app/script.js
+
+      - name: Test HTML structure
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          html = Path("app/index.html").read_text(encoding="utf-8").lower()
+          assert "<html" in html, "HTML tag missing"
+          assert "<head" in html, "Head section missing"
+          assert "<body" in html, "Body section missing"
+          print("HTML structure test passed")
+          PY
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
