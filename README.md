@@ -1453,3 +1453,211 @@ GitHub Repository:
 
 https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
 
+
+
+
+
+
+
+
+
+# Module 5 — DevOps CI/CD Pipeline
+
+## 1. Objective
+
+Implement a Continuous Integration and Continuous Deployment (CI/CD) pipeline using GitHub Actions to validate a web application, build its Docker image, and deploy updates to an AWS EC2 instance through AWS Systems Manager (SSM).
+
+## 2. Tools and Technologies
+
+- Git and GitHub
+- GitHub Actions
+- HTML, CSS, and JavaScript
+- Docker and Docker Compose
+- AWS EC2
+- AWS Systems Manager (SSM)
+- AWS IAM
+- GitHub OIDC authentication
+
+## 3. Project Workflow
+
+1. Make changes to the application or project files.
+2. Push the changes to the `main` branch on GitHub.
+3. GitHub Actions starts the CI workflow.
+4. The workflow checks the required application files.
+5. JavaScript syntax and basic HTML structure are validated.
+6. Docker builds the application image.
+7. After successful testing, the deployment job authenticates with AWS using OIDC.
+8. GitHub Actions sends deployment commands to EC2 through SSM.
+9. EC2 pulls the latest code and rebuilds the application using Docker Compose.
+10. The deployment result is checked in GitHub Actions.
+
+## 4. Workflow File
+
+Location:
+
+`.github/workflows/ci-cd.yml`
+
+This file defines the automated build, test, and deployment jobs.
+
+## 5. CI — Continuous Integration
+
+The CI job performs the following checks:
+
+- Checks out the repository.
+- Configures Node.js.
+- Verifies that required HTML, CSS, and JavaScript files exist.
+- Checks JavaScript syntax.
+- Validates essential HTML tags.
+- Builds the Docker image.
+
+These checks help identify application and build errors before deployment.
+
+## 6. CD — Continuous Deployment
+
+The deployment job runs after the build-and-test job succeeds and is configured for pushes to `main`.
+
+The deployment process:
+
+1. Configures AWS credentials using GitHub OIDC.
+2. Verifies the AWS identity.
+3. Sends a command to the EC2 instance using AWS Systems Manager.
+4. Pulls the latest repository changes.
+5. Builds and starts the application using Docker Compose.
+6. Checks the deployment command status and displays diagnostic output if it fails.
+
+## 7. Important Docker Commands
+
+### Check running containers
+
+```bash
+docker ps
+```
+
+### Check all containers
+
+```bash
+docker ps -a
+```
+
+### Validate Docker Compose configuration
+
+```bash
+docker compose config
+```
+
+### Build and start the application
+
+```bash
+docker compose up -d --build
+```
+
+### Check Compose service status
+
+```bash
+docker compose ps
+```
+
+### View application logs
+
+```bash
+docker compose logs --tail=50
+```
+
+### Test Nginx configuration
+
+```bash
+docker exec cloud-web-compose nginx -t
+```
+
+### Test the local application endpoint
+
+```bash
+curl -I http://localhost:8082
+```
+
+## 8. AWS Configuration
+
+The deployment uses:
+
+- An Ubuntu EC2 instance.
+- Docker and Docker Compose installed on the instance.
+- An IAM instance role that allows Systems Manager access.
+- An IAM deployment role assumed by GitHub Actions through OIDC.
+- The GitHub repository secret `AWS_ROLE_ARN`.
+- A security group that permits the required application traffic.
+
+Sensitive credentials and private keys must never be committed to the repository.
+
+## 9. How to Trigger the Pipeline
+
+From the project directory on your computer, make a small change to a file.
+
+Check the changes:
+
+```bash
+git status
+```
+
+Stage the change:
+
+```bash
+git add .
+```
+
+Commit the change:
+
+```bash
+git commit -m "Update CI/CD project"
+```
+
+Push the change:
+
+```bash
+git push origin main
+```
+
+Open the repository's **Actions** tab to monitor the workflow.
+
+## 10. Verification and Results
+
+The completed pipeline was verified through these checks:
+
+- GitHub Actions build-and-test job succeeded.
+- Docker image build succeeded.
+- AWS authentication and SSM deployment job succeeded.
+- The Docker container was running on EC2.
+- Nginx configuration validation succeeded.
+- A local HTTP request returned `200 OK`.
+- The live application opened successfully in a browser.
+
+## 11. Troubleshooting
+
+| Issue | What to check |
+|---|---|
+| Workflow fails during testing | Review the build-and-test logs. |
+| AWS authentication fails | Check the OIDC provider, IAM trust policy, and `AWS_ROLE_ARN` secret. |
+| SSM command fails | Check the EC2 instance's SSM status, IAM permissions, and command output. |
+| Git reports dubious ownership | Verify repository ownership and Git safe-directory configuration. |
+| Docker container is not running | Inspect `docker ps -a` and the Compose logs. |
+| Website does not open | Check the current EC2 public IP, security group, port mapping, and network configuration. |
+
+## 12. Learning Outcomes
+
+- Understanding CI/CD concepts.
+- Automating application validation with GitHub Actions.
+- Building Docker images in a CI workflow.
+- Deploying applications to AWS EC2.
+- Using AWS Systems Manager for remote deployment.
+- Configuring GitHub OIDC authentication with AWS IAM.
+- Troubleshooting deployment and connectivity issues.
+
+## 13. Repository
+
+GitHub repository:
+
+https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
+
+The application uses the configured host port `8082`. Its public IP address can change, so the current endpoint should be checked in the AWS EC2 console.
+
+
+
