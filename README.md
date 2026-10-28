@@ -1903,6 +1903,8 @@ Basic monitoring was configured for the Cloud Web App deployed on AWS EC2.
 
 CloudWatch alarms were created for CPU utilization and EC2 status-check failures. A Bash script was also created to test the local website, with cron scheduling and log output configured for recurring checks.
 
+
+
 These components provide a foundation for monitoring the health and availability of the deployed application.
 
 
