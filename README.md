@@ -1661,3 +1661,250 @@ The application uses the configured host port `8082`. Its public IP address can 
 
 
 
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+# Module 6 — AWS Monitoring and Health Checks
+
+## 1. Objective
+
+The objective of this module is to monitor the health and performance of the Cloud Web App deployed on AWS EC2 using Amazon CloudWatch and a custom website health-check script.
+
+This module helps identify EC2 status-check failures, monitor CPU utilization, and verify that the web application is responding to HTTP requests.
+
+## 2. Tools and Technologies
+
+- Amazon EC2
+- Amazon CloudWatch
+- CloudWatch Alarms
+- Ubuntu Linux
+- Docker and Docker Compose
+- Nginx
+- Bash scripting
+- Cron scheduling
+- GitHub Actions
+
+## 3. Monitoring Architecture
+
+```text
+                 AWS EC2 Instance
+                        |
+             +----------+----------+
+             |                     |
+       CloudWatch Alarms      Website Health Check
+             |                     |
+       +-----+------+          Cron Scheduler
+       |            |               |
+   CPUUtilization  StatusCheckFailed |
+       |            |               |
+       +-----+------+          Health Check Log
+             |
+       Monitor EC2 Health
+```
+
+## 4. CloudWatch CPU Utilization Alarm
+
+A CloudWatch alarm was created to monitor the CPU utilization of the EC2 instance.
+
+### Configuration
+
+| Setting | Value |
+|---|---|
+| Alarm name | `cloud-web-app-server-high-cpu` |
+| Namespace | `AWS/EC2` |
+| Metric | `CPUUtilization` |
+| Statistic | Average |
+| Period | 5 minutes |
+| Threshold | Greater than 80 |
+| Evaluation | 1 out of 1 datapoint |
+
+### Purpose
+
+The alarm monitors CPU usage and enters the alarm state when the configured threshold is exceeded.
+
+This helps identify unusually high CPU utilization on the EC2 instance.
+
+## 5. EC2 Status Check Alarm
+
+A second CloudWatch alarm was configured to monitor EC2 instance health.
+
+### Configuration
+
+| Setting | Value |
+|---|---|
+| Alarm name | `cloud-web-app-server-status-check-failed` |
+| Namespace | `AWS/EC2` |
+| Metric | `StatusCheckFailed` |
+| Statistic | Maximum |
+| Period | 5 minutes |
+| Threshold | Greater than or equal to 1 |
+| Evaluation | 1 out of 1 datapoint |
+
+### Purpose
+
+The `StatusCheckFailed` metric monitors EC2 system and instance status checks.
+
+A value of `1` indicates a failed status check. The alarm helps detect infrastructure or instance-level problems.
+
+## 6. Website Health Check Script
+
+A Bash script was created on the EC2 instance to check whether the local Nginx web application responds to HTTP requests.
+
+### Script location
+
+```text
+/usr/local/bin/website-health-check.sh
+```
+
+### Script
+
+```bash
+#!/bin/bash
+
+if curl -fsS --max-time 10 http://localhost/ > /dev/null; then
+    echo "$(date -Is) Website UP - HTTP check passed"
+else
+    echo "$(date -Is) Website DOWN - HTTP check failed"
+    exit 1
+fi
+```
+
+### How it works
+
+1. Sends an HTTP request to the local website.
+2. Waits for a response, with a maximum request time of 10 seconds.
+3. Displays a success message when the HTTP request succeeds.
+4. Displays a failure message and returns a non-zero exit code if the request fails.
+
+### Make the script executable
+
+```bash
+sudo chmod +x /usr/local/bin/website-health-check.sh
+```
+
+### Run the health check manually
+
+```bash
+sudo /usr/local/bin/website-health-check.sh
+```
+
+### Example successful output
+
+```text
+2026-10-28T06:38:02+00:00 Website UP - HTTP check passed
+```
+
+The successful result confirms that the local web application responded to the HTTP check at the time of testing.
+
+## 7. Schedule Automatic Health Checks
+
+Cron was configured to execute the health-check script every minute and append the results to a log file.
+
+### Cron configuration
+
+```cron
+* * * * * /usr/local/bin/website-health-check.sh >> /var/log/website-health.log 2>&1
+```
+
+### Log file
+
+```text
+/var/log/website-health.log
+```
+
+### Verify the scheduled job
+
+```bash
+sudo crontab -l
+```
+
+### View recent health-check results
+
+```bash
+sudo tail -n 10 /var/log/website-health.log
+```
+
+The log records successful checks and any HTTP check failures.
+
+**Note:** This script checks the website locally on the EC2 instance. It does not independently verify public internet accessibility or send notifications. CloudWatch alarm notifications require an appropriate notification action to be configured.
+
+## 8. Monitoring Verification
+
+The monitoring configuration was checked using the AWS Management Console and the EC2 terminal.
+
+Verification included:
+
+- CloudWatch CPU utilization alarm created.
+- CloudWatch EC2 status-check alarm created.
+- Website health-check script executed successfully.
+- HTTP check returned `Website UP - HTTP check passed`.
+- Cron schedule configured for automatic execution.
+- Health-check output written to the log file.
+
+## 9. Important Commands
+
+### Run the health check
+
+```bash
+sudo /usr/local/bin/website-health-check.sh
+```
+
+### Check the cron schedule
+
+```bash
+sudo crontab -l
+```
+
+### View health-check logs
+
+```bash
+sudo tail -n 10 /var/log/website-health.log
+```
+
+### Check Docker containers
+
+```bash
+sudo docker ps
+```
+
+### Check application logs
+
+```bash
+sudo docker compose logs --tail=50
+```
+
+## 10. Learning Outcomes
+
+Through this module, I practiced:
+
+- Creating Amazon CloudWatch alarms.
+- Monitoring EC2 CPU utilization.
+- Monitoring EC2 system and instance status checks.
+- Writing a Bash health-check script.
+- Testing HTTP responses using `curl`.
+- Scheduling recurring tasks using cron.
+- Recording monitoring results in a log file.
+- Understanding the difference between application health checks and infrastructure monitoring.
+
+## 11. Result
+
+Basic monitoring was configured for the Cloud Web App deployed on AWS EC2.
+
+CloudWatch alarms were created for CPU utilization and EC2 status-check failures. A Bash script was also created to test the local website, with cron scheduling and log output configured for recurring checks.
+
+These components provide a foundation for monitoring the health and availability of the deployed application.
+
+
+
+
