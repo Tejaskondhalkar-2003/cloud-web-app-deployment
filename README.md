@@ -1641,3 +1641,5 @@ Check the current EC2 public IPv4 address in the AWS console before sharing the 
 **Internship:** Cloud Computing & DevOps — Codomax Digital Solutions, 2026
 
 **Security Reminder:** Never upload private SSH keys, passwords, access tokens, or AWS credentials to GitHub. Keep sensitive configuration secure and allow only the network access required by the application.
+
+
