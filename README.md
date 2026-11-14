@@ -222,188 +222,137 @@ The commands above are useful for checking the current directory, files, user, n
 ## 1. Objective
 Explore cloud compute, storage, networking, IAM, and monitoring services, then develop and deploy a web application to cloud compute infrastructure.
 
-## 2. Step 1 — Prepare the Local Web Application
+## 2. Step 1 — Develop the Web Application Locally
+
 **Where:** Windows PC → Visual Studio Code
 
-The application was developed using HTML, CSS, and JavaScript.
+I created a simple responsive website using HTML, CSS, and JavaScript.
 
-# Step 1 — Create the Web Application
+### Project files
 
-## 📍 Where I worked
+```text
+app/
+├── index.html
+├── style.css
+└── script.js
+```
 
-**Windows PC → Visual Studio Code**
+- `index.html` defines the page structure and content.
+- `style.css` controls the layout, colors, cards, spacing, and responsive design.
+- `script.js` adds interaction to the Test Application button.
 
-I created the web application locally using HTML, CSS and JavaScript.
-
-### `index.html`
-
-The HTML file contains the structure of the web page.
-
-It includes:
-
-* Project title
-* Introduction
-* Test Application button
-* Linux section
-* Networking section
-* Cloud section
-* Footer
-
-### `style.css`
-
-The CSS file was used to:
-
-* Design the page
-* Add colors
-* Add spacing
-* Create cards
-* Style the button
-* Make the website responsive
-
-### `script.js`
-
-JavaScript was used to create a simple interactive button.
-
-When the user clicks **Test Application**, it displays:
+The button displays the message:
 
 ```text
 Application is working successfully!
 ```
 
----
+## 3. Step 2 — Test the Application Locally
 
-# Step 2 — Test the Application Locally
+Open `app/index.html` in a browser and verify:
 
-## 📍 Where I worked
+1. The page loads without errors.
+2. CSS styling and layout display correctly.
+3. The application content and cards are visible.
+4. The JavaScript button displays the success message.
 
-**Visual Studio Code**
+## 4. Step 3 — Initialize Git and Track the Project
 
-I opened the `index.html` file in the browser and checked that:
+**Where:** Windows PowerShell / CMD
 
-* The page loaded correctly.
-* CSS styling worked.
-* The cards were displayed.
-* The JavaScript button worked.
+Move to the project directory. Example:
 
----
-
-# Step 3 — Create Git Repository
-
-## 📍 Where I worked
-
-**Windows CMD / Terminal**
-
-I opened Command Prompt and moved to my project folder.
-
-Example:
-
-```cmd
-cd "C:\Users\Tejas\OneDrive\Desktop\cloud-web-app-deployment"
-```
-
-I initialized Git:
-
-```cmd
+```powershell
+cd "C:\Users\Tejas\Documents\Cloud-DevOps\cloud-web-app-deployment"
 git init
-```
-
-I checked the Git status:
-
-```cmd
 git status
 ```
 
----
+Configure Git identity if it has not already been configured:
 
-# Step 4 — Configure Git
-
-## 📍 Where I worked
-
-**Windows CMD**
-
-I configured my Git username:
-
-```cmd
+```bash
 git config --global user.name "Tejas Kondhalkar"
-```
-
-I configured my Git email:
-
-```cmd
 git config --global user.email "YOUR_GIT_EMAIL"
 ```
 
-Then I checked the Git configuration:
+Stage and commit the application:
 
-```cmd
-git config --global --list
-```
-
----
-
-# Step 5 — Add and Commit the Project
-
-## 📍 Where I worked
-
-**Windows CMD**
-
-I added the application files:
-
-```cmd
+```bash
 git add .
+git commit -m "Add cloud web application"
 ```
 
-Then I created the first commit:
+## 5. Step 4 — Push the Application to GitHub
 
-```cmd
-git commit -m "Add initial cloud web application"
-```
+Create the repository on GitHub, then connect the local project:
 
-I checked the repository status:
-
-```cmd
-git status
-```
-
----
-
-# Step 6 — Connect Local Repository to GitHub
-
-## 📍 Where I worked
-
-**Windows CMD + GitHub**
-
-I created the GitHub repository:
-
-```text
-cloud-web-app-deployment
-```
-
-Then I connected my local Git repository to GitHub:
-
-```cmd
+```bash
 git remote add origin https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment.git
-```
-
-I changed the branch name to `main`:
-
-```cmd
 git branch -M main
-```
-
-Then I pushed the project:
-
-```cmd
 git push -u origin main
 ```
 
-The repository is available on GitHub:
+If the remote named `origin` already exists, check it with `git remote -v` rather than adding it again.
 
-```text
-https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
+## 6. Step 5 — Clone the Repository on EC2
+
+**Where:** Ubuntu EC2 SSH terminal
+
+```bash
+cd /tmp
+git clone https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment.git
+ls /tmp/cloud-web-app-deployment/app
 ```
 
----
+Confirm that `index.html`, `style.css`, and `script.js` are present.
+
+## 7. Step 6 — Deploy the Website to the EC2 Web Server
+
+The initial deployment exercise used Apache on Ubuntu. Apache serves website files from `/var/www/html/`.
+
+```bash
+sudo cp /tmp/cloud-web-app-deployment/app/* /var/www/html/
+sudo systemctl restart apache2
+sudo systemctl status apache2
+```
+
+## 8. Step 7 — Verify the Live Application
+
+From the EC2 terminal:
+
+```bash
+curl -I http://localhost
+```
+
+From a browser, open the current EC2 public IPv4 address:
+
+```text
+http://YOUR_EC2_PUBLIC_IP
+```
+
+Verify that the web page, styling, and JavaScript interaction work.
+
+## 9. Step 8 — Understand the AWS Services Used
+
+| AWS service | Role in this project |
+|---|---|
+| EC2 | Runs the Ubuntu cloud server and web application |
+| VPC | Provides the virtual network for cloud resources |
+| Security Group | Controls inbound and outbound instance traffic |
+| IAM | Controls identities, roles, and permissions |
+| S3 | Object-storage service explored as part of AWS fundamentals |
+| CloudWatch | Monitors EC2 metrics and alarms in Module 06 |
+
+**Deployment clarification:** The Apache commands above document the initial web-server deployment exercise. The current capstone deployment uses Nginx inside Docker and Docker Compose, as documented in Modules 04–06. This project README does not claim a managed database integration is complete.
+
+## 10. Learning Outcomes
+
+- Created and tested an HTML, CSS, and JavaScript web application.
+- Used Git and GitHub to track and store source code.
+- Cloned the project onto an Ubuntu EC2 instance.
+- Deployed the website to a Linux web-server directory.
+- Tested local and public HTTP connectivity.
+- Identified how AWS compute, networking, security, storage, and monitoring services fit into a deployment.
 
 ## 3. Step 2 — Download the Project to the EC2 Server
 **Where:** EC2 SSH terminal
