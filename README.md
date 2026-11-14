@@ -1,73 +1,231 @@
-# Cloud Web App Deployment
+# Cloud Computing & DevOps Internship — Codomax Digital Solutions
 
-## 📌 Project Overview
+This repository documents the practical work and learning completed during the **Codomax Virtual Internship 2026 — Cloud Computing & DevOps** track.
 
-This project demonstrates the complete process of developing a simple web application and deploying it on an AWS EC2 Linux server.
+**Internship:** Cloud Computing & DevOps  
+**Intern:** Tejas Kondhalkar  
+**Repository:** https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
 
-The application was first created locally using **Visual Studio Code**, uploaded to **GitHub**, and then deployed to an **AWS EC2 Ubuntu server** using **Apache Web Server**.
+The README is organized according to the six modules in the Codomax internship tracker. Each module has its own objective, steps, commands, verification notes, and learning outcomes.
 
-### Deployment Flow
+---
+
+# Module 01 — Cloud Computing Foundations
+**Duration:** Day 1–Day 5
+
+## 1. Objective
+Understand cloud computing fundamentals, service models, deployment models, regions, availability zones, virtualization, core cloud services, security, scalability, elasticity, and pricing.
+
+## 2. Step 1 — Understand Cloud Computing
+Cloud computing provides on-demand access to computing resources—such as servers, storage, databases, networking, and software—over a network. Resources can be provisioned when required and scaled according to demand.
+
+## 3. Step 2 — Learn Cloud Service Models
+
+| Model | Meaning | Example use |
+|---|---|---|
+| IaaS | Infrastructure as a Service; virtual machines, networks, and storage are managed by the provider while the user manages the operating system and applications | AWS EC2 |
+| PaaS | Platform as a Service; a managed platform for building and running applications | AWS Elastic Beanstalk |
+| SaaS | Software as a Service; a complete application delivered over the internet | Web-based email and collaboration software |
+
+## 4. Step 3 — Learn Cloud Deployment Models
+- **Public cloud:** Infrastructure offered to multiple customers by a cloud provider.
+- **Private cloud:** Cloud infrastructure dedicated to one organization.
+- **Hybrid cloud:** A combination of private infrastructure and public cloud services.
+
+## 5. Step 4 — Understand Regions and Availability Zones
+- A **Region** is a separate geographic area where a cloud provider operates.
+- An **Availability Zone (AZ)** is an isolated location within a Region.
+- Deploying across multiple Availability Zones can improve application availability and resilience.
+
+## 6. Step 5 — Explore Virtualization and Core Cloud Concepts
+- **Virtualization:** Allows multiple virtual machines to run on physical infrastructure.
+- **Compute:** Processing resources used to run applications.
+- **Storage:** Services used to store files, objects, and application data.
+- **Networking:** Virtual networks, IP addresses, routing, and security controls.
+- **IAM:** Identity and Access Management for controlling access to resources.
+- **Scalability:** Increasing or decreasing resources to meet demand.
+- **Elasticity:** Automatically or dynamically adjusting resources as demand changes.
+- **Pricing:** Understanding usage-based billing, free-tier limits, and resource cleanup.
+
+## 7. Step 6 — Explore AWS Core Services
+The AWS console and services relevant to the internship project include:
+
+| Service | Purpose |
+|---|---|
+| Amazon EC2 | Virtual servers for hosting applications |
+| Amazon S3 | Object storage |
+| Amazon VPC | Isolated virtual networking |
+| AWS IAM | Identity, roles, and permissions |
+| Amazon CloudWatch | Metrics, logs, and alarms |
+| AWS Systems Manager | Managing and running commands on supported instances |
+
+These services are explored further and applied in the practical modules below.
+
+## 8. Step 7 — Cloud Services Exploration Diagram
 
 ```text
-VS Code
-   ↓
-HTML / CSS / JavaScript
-   ↓
-Git & GitHub
-   ↓
-AWS EC2 Ubuntu Server
-   ↓
-Apache Web Server
-   ↓
-Live Web Application
+                 Cloud Platform (AWS)
+                         |
+       +-----------------+-----------------+
+       |                 |                 |
+     Compute           Storage          Networking
+       |                 |                 |
+      EC2                S3                VPC
+       |                                   |
+       +-----------------+-----------------+
+                         |
+                    Security
+                         |
+                        IAM
+                         |
+                    Monitoring
+                         |
+                    CloudWatch
 ```
 
----
-
-# 🎯 Task
-
-The objective of this project was to:
-
-* Build a basic web application.
-* Use HTML, CSS and JavaScript.
-* Store the project on GitHub.
-* Create a Linux server using AWS EC2.
-* Configure network access using an AWS Security Group.
-* Connect to the Linux server using SSH.
-* Install and configure Apache Web Server.
-* Deploy the application on the EC2 server.
-* Access and test the application through a public IP address.
+## 9. Learning Outcomes
+- Understood IaaS, PaaS, and SaaS.
+- Learned public, private, and hybrid cloud models.
+- Understood Regions and Availability Zones.
+- Explored virtualization and common cloud capabilities.
+- Identified the purpose of key AWS services used in later modules.
 
 ---
 
-# 🛠️ Technologies Used
+# Module 02 — Linux, Networking & Cloud Infrastructure
+**Duration:** Day 6–Day 10
 
-* HTML5
-* CSS3
-* JavaScript
-* Visual Studio Code
-* Git
-* GitHub
-* AWS EC2
-* Ubuntu Server
-* Apache2
-* SSH
-* Linux Command Line
+## 1. Objective
+Practice Linux server administration, SSH access, IP and port concepts, DNS and firewall fundamentals, and secure cloud server deployment.
 
----
+## 2. Step 1 — Create an AWS EC2 Linux Server
+**Where:** AWS Management Console → EC2
 
-# 📁 Project Structure
+The project server was created with the following configuration:
+
+| Setting | Configuration |
+|---|---|
+| Instance name | `cloud-web-app-server` |
+| Operating system | Ubuntu Server 24.04 LTS |
+| Instance type | `t3.micro` |
+| Architecture | 64-bit |
+| Region | US East (N. Virginia) |
+| Availability Zone | `us-east-1c` |
+
+## 3. Step 2 — Create an SSH Key Pair
+**Where:** AWS Console → EC2 → Key Pairs
+
+An EC2 key pair was created for secure SSH authentication. The private `.pem` key was kept outside the public GitHub repository.
+
+## 4. Step 3 — Configure the Security Group
+**Where:** AWS Console → EC2 → Security Groups
+
+The inbound rules used for the web server were:
+
+| Type | Protocol | Port | Source / purpose |
+|---|---|---:|---|
+| SSH | TCP | 22 | Restricted to my IP for administration |
+| HTTP | TCP | 80 | Public web access |
+
+Only required inbound access should be allowed. SSH should not be exposed to all IP addresses.
+
+## 5. Step 4 — Connect to Ubuntu Using SSH
+**Where:** Windows CMD / PowerShell
+
+Move to the folder containing the downloaded key:
+
+```cmd
+cd %USERPROFILE%\Downloads
+dir *.pem
+```
+
+Connect using the actual key filename and current EC2 public IPv4 address:
+
+```bash
+ssh -i "YOUR_KEY_FILE.pem" ubuntu@YOUR_EC2_PUBLIC_IP
+```
+
+Replace both placeholders with the correct local key filename and EC2 address. Never publish the private key.
+
+When prompted to trust the host, verify the host and enter `yes` to continue.
+
+## 6. Step 5 — Update Ubuntu
+**Where:** EC2 SSH terminal
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+These commands refresh package information and install available updates.
+
+## 7. Step 6 — Install and Check Apache
+```bash
+sudo apt install apache2 -y
+sudo systemctl status apache2
+```
+
+The Apache service was checked for an `active (running)` status.
+
+## 8. Step 7 — Test Server Connectivity
+From the EC2 terminal:
+
+```bash
+curl http://localhost
+```
+
+From a browser, open the current EC2 public IPv4 address using HTTP:
 
 ```text
-cloud-web-app-deployment/
-│
-└── app/
-    ├── index.html
-    ├── style.css
-    └── script.js
+http://YOUR_EC2_PUBLIC_IP
 ```
 
+A successful response confirms that the web server can be reached through the configured network path and security-group rule.
+
+## 9. Step 8 — Linux and Networking Commands Practiced
+
+```bash
+pwd
+ls -la
+cd /path/to/directory
+whoami
+ip addr
+ip route
+ss -tuln
+ps aux
+sudo systemctl status apache2
+sudo systemctl restart apache2
+curl -I http://localhost
+```
+
+The commands above are useful for checking the current directory, files, user, network interfaces, routes, listening ports, processes, services, and HTTP responses.
+
+## 10. Security Notes
+- Keep SSH access restricted to a trusted source IP.
+- Keep private SSH keys outside GitHub.
+- Allow only the ports required by the application.
+- Do not commit AWS credentials or other secrets.
+- Check the current public IP in the EC2 console before connecting.
+
+## 11. Learning Outcomes
+- Practiced Linux package and service management.
+- Created an Ubuntu EC2 instance.
+- Used SSH to access a cloud Linux server.
+- Configured inbound network access with a security group.
+- Practiced basic IP, route, port, process, and connectivity checks.
+
 ---
+
+# Module 03 — Cloud Services & Web App Deployment
+**Duration:** Day 11–Day 15
+
+## 1. Objective
+Explore cloud compute, storage, networking, IAM, and monitoring services, then develop and deploy a web application to cloud compute infrastructure.
+
+## 2. Step 1 — Prepare the Local Web Application
+**Where:** Windows PC → Visual Studio Code
+
+The application was developed using HTML, CSS, and JavaScript.
 
 # Step 1 — Create the Web Application
 
@@ -247,470 +405,71 @@ https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
 
 ---
 
-# Step 7 — Create AWS EC2 Instance
+## 3. Step 2 — Download the Project to the EC2 Server
+**Where:** EC2 SSH terminal
 
-## 📍 Where I worked
-
-**AWS Management Console → EC2**
-
-I created a new EC2 instance.
-
-### Instance configuration
-
-| Setting           | Configuration           |
-| ----------------- | ----------------------- |
-| Instance Name     | cloud-web-app-server    |
-| Operating System  | Ubuntu Server 24.04 LTS |
-| Instance Type     | t3.micro                |
-| Architecture      | 64-bit                  |
-| Region            | US East (N. Virginia)   |
-| Availability Zone | us-east-1c              |
-
-The instance was launched successfully.
-
----
-
-# Step 8 — Create SSH Key Pair
-
-## 📍 Where I worked
-
-**AWS Console → EC2 → Key Pairs**
-
----
-
-# Step 9 — Configure Security Group
-
-## 📍 Where I worked
-
-**AWS Console → EC2 → Security Groups**
-
-I configured inbound rules to allow the required traffic.
-
-### SSH
-
-```text
-Type: SSH
-Protocol: TCP
-Port: 22
-Source: My IP
-```
-
-SSH is required to connect to the Ubuntu server.
-
-### HTTP
-
-```text
-Type: HTTP
-Protocol: TCP
-Port: 80
-Source: Anywhere
-```
-
-HTTP is required so users can access the website through a browser.
-
----
-
-# Step 10 — Connect to EC2 Using SSH
-
-## 📍 Where I worked
-
-**Windows CMD**
-
-I opened Command Prompt.
-
-I moved to the Downloads folder where the `.pem` key was saved:
-
-```cmd
-cd %USERPROFILE%\Downloads
-```
-
-I checked the key:
-
-```cmd
-dir *.pem
-```
-
-Then I connected to the Ubuntu EC2 server:
-
-```cmd
-ssh -i "" ubuntu@
-```
-
-For example:
-
-```cmd
-ssh -i "" ubuntu@
-```
-
-When SSH asked:
-
-```text
-Are you sure you want to continue connecting?
-```
-
-I entered:
-
-```text
-yes
-```
-
-After successful authentication, I received an Ubuntu terminal prompt similar to:
-
-```text
-ubuntu@ip xxx-xx-xx-xx:~$
-```
-
-This confirmed that I was connected to the EC2 Linux server.
-
----
-
-# Step 11 — Update Ubuntu
-
-## 📍 Where I worked
-
-**SSH Terminal connected to AWS EC2**
-
-I updated the Ubuntu package information:
-
-```bash
-sudo apt update
-```
-
-Then I upgraded installed packages:
-
-```bash
-sudo apt upgrade -y
-```
-
----
-
-# Step 12 — Install Apache Web Server
-
-## 📍 Where I worked
-
-**AWS EC2 SSH Terminal**
-
-I installed Apache:
-
-```bash
-sudo apt install apache2 -y
-```
-
-Then I checked the Apache service:
-
-```bash
-sudo systemctl status apache2
-```
-
-The service showed:
-
-```text
-Active: active (running)
-```
-
-This confirmed that Apache was running successfully.
-
----
-
-# Step 13 — Test Apache Locally
-
-## 📍 Where I worked
-
-**AWS EC2 SSH Terminal**
-
-I tested Apache from inside the server:
-
-```bash
-curl http://localhost
-```
-
-Apache returned HTML content, confirming that the web server was working.
-
----
-
-# Step 14 — Test Apache From the Internet
-
-## 📍 Where I worked
-
-**Windows Web Browser**
-
-I opened the EC2 public IP address:
-
-```text
-http://<>
-```
-
-The Apache default page appeared.
-
-This confirmed that:
-
-```text
-Internet
-   ↓
-AWS EC2
-   ↓
-Security Group
-   ↓
-Port 80
-   ↓
-Apache
-```
-
-was working correctly.
-
----
-
-# Step 15 — Download GitHub Repository to EC2
-
-## 📍 Where I worked
-
-**AWS EC2 SSH Terminal**
-
-I moved to the temporary directory:
+The GitHub repository was cloned to the server:
 
 ```bash
 cd /tmp
-```
-
-I cloned my GitHub repository:
-
-```bash
 git clone https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment.git
-```
-
-I checked the application files:
-
-```bash
 ls /tmp/cloud-web-app-deployment/app
 ```
 
-The output contained:
+The application directory contains the website files, including `index.html`, `style.css`, and `script.js`.
 
-```text
-index.html
-script.js
-style.css
-```
-
-This confirmed that the application was successfully downloaded to the EC2 server.
-
----
-
-# Step 16 — Deploy Application to Apache
-
-## 📍 Where I worked
-
-**AWS EC2 SSH Terminal**
-
-Apache serves website files from:
-
-```text
-/var/www/html/
-```
-
-I copied my application files into the Apache web directory:
+## 4. Step 3 — Deploy the Application to the Web Server
+The initial EC2 deployment exercise used Apache's default web directory:
 
 ```bash
 sudo cp /tmp/cloud-web-app-deployment/app/* /var/www/html/
-```
-
-I restarted Apache:
-
-```bash
 sudo systemctl restart apache2
 ```
 
----
-
-# Step 17 — Test the Deployed Application
-
-## 📍 Where I worked
-
-**Windows Web Browser**
-
-I opened:
+## 5. Step 4 — Verify the Deployed Website
+Open the current EC2 public IPv4 address in a browser:
 
 ```text
-http://<>
+http://YOUR_EC2_PUBLIC_IP
 ```
 
-The Apache default page was replaced by my own web application.
+The website was checked for correct HTML content, CSS styling, and JavaScript button behavior. The application displayed a successful test message when the button was clicked.
 
-The deployed website displayed:
+## 6. Step 5 — Deployment Flow
 
 ```text
-Cloud Web App
-
-Linux • Networking • Cloud Computing
-
-Welcome to My Cloud Project
+Local HTML / CSS / JavaScript
+             |
+             v
+        Git & GitHub
+             |
+             v
+       AWS EC2 Ubuntu
+             |
+             v
+     Web Server (initially Apache)
+             |
+             v
+      Live Web Application
 ```
 
-I also tested the **Test Application** button.
+## 7. Step 6 — Cloud Services Used in the Project
+- **EC2:** Hosted the Ubuntu server and application.
+- **VPC and Security Groups:** Provided network isolation and inbound traffic controls.
+- **IAM:** Provided roles and permissions for AWS service access in the later deployment workflow.
+- **CloudWatch:** Used for infrastructure monitoring in Module 06.
+- **S3:** Explored as an AWS object-storage service.
 
-The JavaScript displayed:
+**Implementation scope:** The verified live application described in the capstone section is served by Nginx in Docker on EC2. The Apache steps above document the initial server-deployment exercise. A managed database integration is not claimed as complete in this README.
 
-```text
-Application is working successfully!
-```
-
-This confirmed that the HTML, CSS and JavaScript were successfully deployed.
+## 8. Learning Outcomes
+- Developed a basic web application.
+- Used GitHub as the source repository.
+- Deployed web files to an Ubuntu EC2 server.
+- Tested the website through a public HTTP endpoint.
+- Explored the role of AWS compute, storage, networking, IAM, and monitoring services.
 
 ---
-
-# 🔄 Complete Deployment Process
-
-The complete process can be summarized as:
-
-```text
-1. Create Web Application
-        ↓
-2. Test in VS Code
-        ↓
-3. Initialize Git
-        ↓
-4. Commit Files
-        ↓
-5. Push to GitHub
-        ↓
-6. Create AWS EC2 Instance
-        ↓
-7. Configure Security Group
-        ↓
-8. Connect using SSH
-        ↓
-9. Update Ubuntu
-        ↓
-10. Install Apache
-        ↓
-11. Test Apache
-        ↓
-12. Clone GitHub Repository
-        ↓
-13. Copy Application to /var/www/html
-        ↓
-14. Restart Apache
-        ↓
-15. Open Public IP
-        ↓
-16. Test Live Application
-```
-
----
-
-# 🧰 Important Commands Used
-
-## Git Commands
-
-```bash
-git init
-git status
-git add .
-git commit -m "Add initial cloud web application"
-git branch -M main
-git remote add origin <GITHUB_REPOSITORY_URL>
-git push -u origin main
-```
-
-## Linux / AWS Commands
-
-```bash
-sudo apt update
-sudo apt upgrade -y
-sudo apt install apache2 -y
-sudo systemctl status apache2
-sudo systemctl restart apache2
-curl http://localhost
-cd /tmp
-git clone <GITHUB_REPOSITORY_URL>
-ls /tmp/cloud-web-app-deployment/app
-sudo cp /tmp/cloud-web-app-deployment/app/* /var/www/html/
-```
-
-## SSH Command
-
-```bash
-ssh -i "" ubuntu@<>
-```
-
----
-
-# 🔐 Security Considerations
-
-The following security practices were followed:
-
-* SSH access was restricted to my IP address.
-* HTTP traffic was allowed through port 80.
-* The private `.pem` key was not uploaded to GitHub.
-* AWS credentials were not stored inside the project.
-* Sensitive AWS information should not be included in screenshots or public documentation.
-
----
-
-# 📚 What I Learned
-
-Through this project, I learned how to:
-
-* Build a basic web application.
-* Use HTML, CSS and JavaScript.
-* Use Git and GitHub for version control.
-* Create and configure an AWS EC2 instance.
-* Work with Ubuntu Linux.
-* Connect to a cloud server using SSH.
-* Configure AWS Security Groups.
-* Install and manage Apache.
-* Deploy a website on a Linux server.
-* Clone a GitHub repository on an EC2 server.
-* Serve web files using Apache.
-* Test a live cloud-hosted application.
-
----
-
-# 🚀 Project Result
-
-The web application was successfully deployed on an **AWS EC2 Ubuntu server** using **Apache Web Server**.
-
-The final architecture was:
-
-```text
-GitHub Repository
-       ↓
-AWS EC2 Ubuntu Server
-       ↓
-Apache Web Server
-       ↓
-HTML + CSS + JavaScript
-       ↓
-Live Web Application
-```
-
----
-
-# 👤 Author
-
-**Tejas Kondhalkar**
-
-Electronics & Telecommunication Engineering Graduate
-
-Interests:
-
-* Networking
-* Cloud Computing
-* Linux
-* Cybersecurity
-* AWS
-* IT Infrastructure
-
-GitHub:
-
-https://github.com/Tejaskondhalkar-2003  
-
-
-
-
-
-
-
 
 # Docker & Containerization
 
@@ -1453,15 +1212,9 @@ GitHub Repository:
 
 https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
 
+---
 
-
-
-
-
-
-
-
-# Module 5 — DevOps CI/CD Pipeline
+# Module 05 — DevOps, CI/CD & Monitoring
 
 ## 1. Objective
 
@@ -1672,10 +1425,140 @@ The production Docker Compose configuration maps host port `80` to container por
 
 ---
 
+---
 
+# Module 06 — Cloud & DevOps Capstone Project
+**Duration:** Day 26–Day 30
 
+## 1. Objective
+Build, containerize, automate, deploy, and monitor a real web application by integrating cloud infrastructure, Git, Docker, CI/CD, monitoring, and managed database/authentication services where implemented.
 
-# Module 6 — AWS Monitoring and Health Checks
+## 2. Capstone Architecture
+
+The verified deployment architecture for the current web application is:
+
+```text
+Developer
+   |
+   v
+GitHub Repository
+   |
+   v
+GitHub Actions
+   |
+   +---- CI: validate files and build Docker image
+   |
+   +---- CD: AWS OIDC authentication
+                 |
+                 v
+          AWS Systems Manager
+                 |
+                 v
+          AWS EC2 (Ubuntu)
+                 |
+                 v
+          Docker Compose
+                 |
+                 v
+          Nginx Container
+                 |
+                 v
+          Live Web Application
+                 |
+                 v
+        CloudWatch + Health Check
+```
+
+## 3. Step 1 — Review the Application and Source Repository
+- Confirm the application source files are present in the `app/` directory.
+- Confirm the Dockerfile and Compose configuration are in the repository root.
+- Keep the GitHub repository updated with the completed project files.
+
+Repository: https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
+
+## 4. Step 2 — Review the Container Configuration
+
+### Dockerfile
+
+```dockerfile
+FROM nginx:alpine
+COPY app/ /usr/share/nginx/html/
+EXPOSE 80
+```
+
+### Docker Compose
+
+```yaml
+services:
+  web:
+    build: .
+    container_name: cloud-web-compose
+    ports:
+      - "80:80"
+    environment:
+      APP_ENV: production
+```
+
+The current production configuration maps host port 80 to container port 80.
+
+## 5. Step 3 — Review Automated Deployment
+The GitHub Actions workflow is stored at:
+
+```text
+.github/workflows/ci-cd.yml
+```
+
+The workflow validates the application, builds the Docker image, authenticates to AWS using GitHub OIDC, and sends deployment commands to EC2 through Systems Manager.
+
+## 6. Step 4 — Review Monitoring and Health Checks
+The project includes:
+- A CloudWatch CPU utilization alarm.
+- A CloudWatch EC2 status-check alarm.
+- A Bash website health-check script.
+- A cron schedule that runs the check every minute.
+- A log file at `/var/log/website-health.log`.
+
+The detailed configuration and commands are documented in the monitoring section below.
+
+## 7. Step 5 — Managed Database and Authentication Integration
+The Codomax capstone objectives include managed database/authentication integration. The README does not currently record a verified, working managed database connection or end-to-end authentication flow. Amazon Cognito setup was explored, but it should only be marked complete after the user pool/app client and application sign-in flow are tested successfully. No database integration is claimed here.
+
+## 8. Step 6 — Verify the Live Deployment
+
+| Item | Verified configuration at the time of checking |
+|---|---|
+| EC2 instance | `cloud-web-app-server` |
+| Instance type | `t3.micro` |
+| AWS Region | `us-east-1` (N. Virginia) |
+| Container | `cloud-web-compose` |
+| Web server | Nginx |
+| Host/container port | `80:80` |
+| Public URL at last verification | `http://54.90.156.63/` |
+| HTTP response | `200 OK` |
+
+The website was opened successfully during verification. The EC2 public IPv4 address may change after a stop/start unless an Elastic IP is configured. Check the EC2 console for the current address before sharing the live link. The site uses HTTP, not HTTPS.
+
+## 9. Step 7 — Final Capstone Deliverables
+
+| Deliverable | README / project location |
+|---|---|
+| GitHub repository | Project repository linked above |
+| Live deployment | EC2 public URL; verify current IP before submission |
+| Dockerfile | `Dockerfile` |
+| Docker Compose | `docker-compose.yml` |
+| CI/CD workflow | `.github/workflows/ci-cd.yml` |
+| Monitoring and health checks | CloudWatch alarms, Bash script, cron, and log |
+| Architecture diagram | Capstone architecture above |
+| Managed database/auth | Not yet documented as verified; update only after successful testing |
+
+## 10. Capstone Result
+The web application was containerized with Docker and Docker Compose, deployed to AWS EC2, automated through GitHub Actions and AWS Systems Manager, and monitored using CloudWatch alarms and a scheduled website health check.
+
+---
+
+## Module 06 — Monitoring Implementation Details
+
+### AWS Monitoring and Health Checks
 
 ## 1. Objective
 
@@ -1695,7 +1578,7 @@ This module helps identify EC2 status-check failures, monitor CPU utilization, a
 - Cron scheduling
 - GitHub Actions
 
-## 2A. Current Live Deployment
+#### Current Live Deployment
 
 The completed application is deployed on an Ubuntu 24.04 EC2 instance and served by Nginx inside a Docker container managed with Docker Compose.
 
@@ -1924,6 +1807,15 @@ CloudWatch alarms were created for CPU utilization and EC2 status-check failures
 
 These components provide a foundation for monitoring the health and availability of the deployed application.
 
+---
 
+# Project Repository and Final Notes
 
+**GitHub:** https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
 
+**Author:** Tejas Kondhalkar  
+Electronics & Telecommunication Engineering Graduate
+
+**Areas practiced:** Cloud Computing, AWS, Linux, Networking, Docker, GitHub Actions, CI/CD, and monitoring.
+
+**Security reminder:** Do not commit private keys, passwords, access tokens, or AWS credentials. Verify the current EC2 public IP before sharing the live website URL.
