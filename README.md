@@ -471,7 +471,8 @@ Local HTML / CSS / JavaScript
 
 ---
 
-# Docker & Containerization
+# Module 04 — Docker & Containerization
+**Duration:** Day 16–Day 20
 
 ## Overview
 
