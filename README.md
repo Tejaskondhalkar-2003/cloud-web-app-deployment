@@ -1572,7 +1572,7 @@ docker exec cloud-web-compose nginx -t
 ### Test the local application endpoint
 
 ```bash
-curl -I http://localhost:8082
+curl -I http://localhost
 ```
 
 ## 8. AWS Configuration
@@ -1657,7 +1657,7 @@ GitHub repository:
 
 https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
 
-The application uses the configured host port `8082`. Its public IP address can change, so the current endpoint should be checked in the AWS EC2 console.
+The production Docker Compose configuration maps host port `80` to container port `80`. The EC2 public IPv4 address can change after a stop/start unless an Elastic IP is configured. Check the AWS EC2 console for the current address before sharing the live URL.
 
 
 
@@ -1694,6 +1694,23 @@ This module helps identify EC2 status-check failures, monitor CPU utilization, a
 - Bash scripting
 - Cron scheduling
 - GitHub Actions
+
+## 2A. Current Live Deployment
+
+The completed application is deployed on an Ubuntu 24.04 EC2 instance and served by Nginx inside a Docker container managed with Docker Compose.
+
+| Item | Current configuration |
+|---|---|
+| EC2 instance | `cloud-web-app-server` |
+| Instance type | `t3.micro` |
+| AWS Region | `us-east-1` (N. Virginia) |
+| Container | `cloud-web-compose` |
+| Web server | Nginx |
+| Host/container port | `80:80` |
+| Application URL at the time of verification | `http://54.90.156.63/` |
+
+The live URL was opened successfully and returned an HTTP `200 OK` response during verification. The public IP is automatically assigned and may change after an EC2 stop/start; verify the current IP in the EC2 console before sharing it. The site currently uses HTTP, not HTTPS.
+
 
 ## 3. Monitoring Architecture
 
