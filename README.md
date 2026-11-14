@@ -1,234 +1,325 @@
 # Cloud Computing & DevOps Internship — Codomax Digital Solutions
 
-This repository documents the practical work and learning completed during the **Codomax Virtual Internship 2026 — Cloud Computing & DevOps** track.
+This repository documents the practical work, exercises, and learning completed during the **Codomax Virtual Internship 2026 — Cloud Computing & DevOps** program.
 
 **Internship:** Cloud Computing & DevOps  
 **Intern:** Tejas Kondhalkar  
-**Repository:** https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
+**Organization:** Codomax Digital Solutions  
+**Repository:** [cloud-web-app-deployment](https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment)
 
-The README is organized according to the six modules in the Codomax internship tracker. Each module has its own objective, steps, commands, verification notes, and learning outcomes.
+The internship is organized into six modules covering cloud computing fundamentals, Linux and networking, cloud services, Docker, DevOps automation, and a cloud deployment capstone project.
 
 ---
 
 # Module 01 — Cloud Computing Foundations
+
 **Duration:** Day 1–Day 5
 
 ## 1. Objective
-Understand cloud computing fundamentals, service models, deployment models, regions, availability zones, virtualization, core cloud services, security, scalability, elasticity, and pricing.
+
+Understand cloud computing fundamentals, cloud service models, deployment models, regions, availability zones, virtualization, core cloud services, security, scalability, elasticity, and pricing.
 
 ## 2. Step 1 — Understand Cloud Computing
-Cloud computing provides on-demand access to computing resources—such as servers, storage, databases, networking, and software—over a network. Resources can be provisioned when required and scaled according to demand.
+
+Cloud computing provides on-demand access to computing resources such as servers, storage, databases, networking, and software over the internet.
+
+Instead of purchasing and maintaining physical infrastructure, organizations can use cloud platforms to provision resources according to their requirements.
+
+### Key characteristics
+
+- On-demand resource availability.
+- Pay-as-you-go pricing.
+- Scalability and elasticity.
+- Resource sharing.
+- Access to services over a network.
+- Flexible infrastructure management.
 
 ## 3. Step 2 — Learn Cloud Service Models
 
-| Model | Meaning | Example use |
-|---|---|---|
-| IaaS | Infrastructure as a Service; virtual machines, networks, and storage are managed by the provider while the user manages the operating system and applications | AWS EC2 |
-| PaaS | Platform as a Service; a managed platform for building and running applications | AWS Elastic Beanstalk |
-| SaaS | Software as a Service; a complete application delivered over the internet | Web-based email and collaboration software |
+| Model | Full Form | Description | Example |
+|---|---|---|---|
+| IaaS | Infrastructure as a Service | Provides virtual servers, storage, and networking. | Amazon EC2 |
+| PaaS | Platform as a Service | Provides a managed platform to develop and deploy applications. | AWS Elastic Beanstalk |
+| SaaS | Software as a Service | Provides ready-to-use applications over the internet. | Web-based email |
+
+### Understanding the models
+
+- **IaaS:** The cloud provider manages the physical infrastructure, while the customer manages the operating system and applications.
+- **PaaS:** The provider manages the infrastructure and platform, allowing developers to focus on application development.
+- **SaaS:** The provider manages the complete application, which users access through the internet.
 
 ## 4. Step 3 — Learn Cloud Deployment Models
-- **Public cloud:** Infrastructure offered to multiple customers by a cloud provider.
-- **Private cloud:** Cloud infrastructure dedicated to one organization.
-- **Hybrid cloud:** A combination of private infrastructure and public cloud services.
+
+- **Public Cloud:** Cloud infrastructure provided over the internet and shared across multiple customers.
+- **Private Cloud:** Cloud infrastructure dedicated to a single organization.
+- **Hybrid Cloud:** A combination of private infrastructure and public cloud services.
 
 ## 5. Step 4 — Understand Regions and Availability Zones
-- A **Region** is a separate geographic area where a cloud provider operates.
-- An **Availability Zone (AZ)** is an isolated location within a Region.
-- Deploying across multiple Availability Zones can improve application availability and resilience.
 
-## 6. Step 5 — Explore Virtualization and Core Cloud Concepts
-- **Virtualization:** Allows multiple virtual machines to run on physical infrastructure.
-- **Compute:** Processing resources used to run applications.
-- **Storage:** Services used to store files, objects, and application data.
-- **Networking:** Virtual networks, IP addresses, routing, and security controls.
-- **IAM:** Identity and Access Management for controlling access to resources.
-- **Scalability:** Increasing or decreasing resources to meet demand.
-- **Elasticity:** Automatically or dynamically adjusting resources as demand changes.
-- **Pricing:** Understanding usage-based billing, free-tier limits, and resource cleanup.
+- **Region:** A geographical area where a cloud provider operates its infrastructure.
+- **Availability Zone:** An isolated location within a Region containing cloud infrastructure.
+- **High Availability:** Deploying resources across multiple Availability Zones can improve service availability and resilience.
+
+## 6. Step 5 — Understand Virtualization and Core Concepts
+
+| Concept | Description |
+|---|---|
+| Virtualization | Allows multiple virtual machines to run on physical infrastructure. |
+| Compute | Processing resources used to run applications. |
+| Storage | Services used to store files and application data. |
+| Networking | Virtual networks, IP addresses, routing, and connectivity. |
+| IAM | Identity and Access Management for controlling resource access. |
+| Scalability | Increasing or decreasing resources to meet requirements. |
+| Elasticity | Dynamically adjusting resources according to demand. |
+| Cloud Pricing | Understanding usage-based billing and resource costs. |
 
 ## 7. Step 6 — Explore AWS Core Services
-The AWS console and services relevant to the internship project include:
 
-| Service | Purpose |
+The following AWS services were explored as part of cloud fundamentals:
+
+| AWS Service | Purpose |
 |---|---|
-| Amazon EC2 | Virtual servers for hosting applications |
-| Amazon S3 | Object storage |
-| Amazon VPC | Isolated virtual networking |
-| AWS IAM | Identity, roles, and permissions |
-| Amazon CloudWatch | Metrics, logs, and alarms |
-| AWS Systems Manager | Managing and running commands on supported instances |
-
-These services are explored further and applied in the practical modules below.
+| Amazon EC2 | Provides virtual servers in the cloud. |
+| Amazon S3 | Provides scalable object storage. |
+| Amazon VPC | Provides isolated virtual networking. |
+| AWS IAM | Manages users, roles, and permissions. |
+| Amazon CloudWatch | Monitors metrics, logs, and alarms. |
+| AWS Systems Manager | Helps manage and operate cloud instances. |
 
 ## 8. Step 7 — Cloud Services Exploration Diagram
 
 ```text
-                 Cloud Platform (AWS)
+                  AWS Cloud Platform
                          |
-       +-----------------+-----------------+
-       |                 |                 |
-     Compute           Storage          Networking
-       |                 |                 |
-      EC2                S3                VPC
-       |                                   |
-       +-----------------+-----------------+
+        +----------------+----------------+
+        |                |                |
+     Compute           Storage         Networking
+        |                |                |
+       EC2               S3               VPC
+        |                                 |
+        +----------------+----------------+
                          |
-                    Security
+                      Security
                          |
                         IAM
                          |
-                    Monitoring
+                     Monitoring
                          |
-                    CloudWatch
+                     CloudWatch
 ```
 
 ## 9. Learning Outcomes
-- Understood IaaS, PaaS, and SaaS.
-- Learned public, private, and hybrid cloud models.
-- Understood Regions and Availability Zones.
-- Explored virtualization and common cloud capabilities.
-- Identified the purpose of key AWS services used in later modules.
+
+- Understood the fundamentals of cloud computing.
+- Learned IaaS, PaaS, and SaaS service models.
+- Understood public, private, and hybrid cloud deployment models.
+- Learned Regions and Availability Zones.
+- Explored virtualization and cloud infrastructure.
+- Identified the purpose of common AWS services.
+- Understood scalability, elasticity, and cloud pricing.
 
 ---
 
 # Module 02 — Linux, Networking & Cloud Infrastructure
+
 **Duration:** Day 6–Day 10
 
 ## 1. Objective
-Practice Linux server administration, SSH access, IP and port concepts, DNS and firewall fundamentals, and secure cloud server deployment.
 
-## 2. Step 1 — Create an AWS EC2 Linux Server
-**Where:** AWS Management Console → EC2
+Learn Linux command-line operations, file and directory management, SSH connectivity, IP addressing, ports, DNS, firewall fundamentals, and cloud server deployment.
 
-The project server was created with the following configuration:
+## 2. Step 1 — Create an AWS EC2 Linux Instance
+
+**Platform:** AWS Management Console
+
+An Ubuntu Linux virtual server was created using Amazon EC2.
+
+### EC2 Configuration
 
 | Setting | Configuration |
 |---|---|
-| Instance name | `cloud-web-app-server` |
-| Operating system | Ubuntu Server 24.04 LTS |
-| Instance type | `t3.micro` |
+| Instance Name | `cloud-web-app-server` |
+| Operating System | Ubuntu Server 24.04 LTS |
+| Instance Type | `t3.micro` |
 | Architecture | 64-bit |
-| Region | US East (N. Virginia) |
+| AWS Region | US East (N. Virginia) |
 | Availability Zone | `us-east-1c` |
 
+Amazon EC2 provides scalable virtual computing resources in the AWS Cloud.
+
 ## 3. Step 2 — Create an SSH Key Pair
-**Where:** AWS Console → EC2 → Key Pairs
 
-An EC2 key pair was created for secure SSH authentication. The private `.pem` key was kept outside the public GitHub repository.
+**Navigation:** AWS Console → EC2 → Key Pairs
 
-## 4. Step 3 — Configure the Security Group
-**Where:** AWS Console → EC2 → Security Groups
+An SSH key pair was created to authenticate securely with the Ubuntu instance.
 
-The inbound rules used for the web server were:
+- The public key is associated with the EC2 instance.
+- The private `.pem` key is used to establish SSH access.
+- The private key must be stored securely.
+- Private keys must never be uploaded to a public GitHub repository.
 
-| Type | Protocol | Port | Source / purpose |
-|---|---|---:|---|
-| SSH | TCP | 22 | Restricted to my IP for administration |
-| HTTP | TCP | 80 | Public web access |
+## 4. Step 3 — Configure the EC2 Security Group
 
-Only required inbound access should be allowed. SSH should not be exposed to all IP addresses.
+**Navigation:** AWS Console → EC2 → Security Groups
+
+The following inbound rules were configured for the web server:
+
+| Type | Protocol | Port | Purpose |
+|---|---|---|---|
+| SSH | TCP | 22 | Remote administration from a trusted IP |
+| HTTP | TCP | 80 | Accessing the web application |
+
+Security groups act as virtual firewalls that control inbound and outbound traffic for AWS resources.
+
+**Security practice:** SSH access should be restricted to a trusted IP address instead of being opened to everyone.
 
 ## 5. Step 4 — Connect to Ubuntu Using SSH
-**Where:** Windows CMD / PowerShell
 
-Move to the folder containing the downloaded key:
+**Platform:** Windows PowerShell / CMD
 
-```cmd
-cd %USERPROFILE%\Downloads
-dir *.pem
+Locate the downloaded private key:
+
+```powershell
+cd $env:USERPROFILE\Downloads
+Get-ChildItem *.pem
 ```
 
-Connect using the actual key filename and current EC2 public IPv4 address:
+Connect to the EC2 instance:
 
 ```bash
 ssh -i "YOUR_KEY_FILE.pem" ubuntu@YOUR_EC2_PUBLIC_IP
 ```
 
-Replace both placeholders with the correct local key filename and EC2 address. Never publish the private key.
+Replace the placeholders with the actual private key filename and current EC2 public IPv4 address.
 
-When prompted to trust the host, verify the host and enter `yes` to continue.
+After connecting, the Ubuntu terminal can be used to manage the server remotely.
 
-## 6. Step 5 — Update Ubuntu
-**Where:** EC2 SSH terminal
+## 6. Step 5 — Update the Ubuntu Server
+
+Run the following commands inside the EC2 terminal:
 
 ```bash
 sudo apt update
 sudo apt upgrade -y
 ```
 
-These commands refresh package information and install available updates.
+**Explanation:**
 
-## 7. Step 6 — Install and Check Apache
+- `apt update` refreshes the package information.
+- `apt upgrade -y` installs available package updates.
+
+Keeping the server updated helps maintain security and stability.
+
+## 7. Step 6 — Install and Check Apache Web Server
+
+Install Apache:
+
 ```bash
 sudo apt install apache2 -y
+```
+
+Check the service:
+
+```bash
 sudo systemctl status apache2
 ```
 
 The Apache service was checked for an `active (running)` status.
 
 ## 8. Step 7 — Test Server Connectivity
-From the EC2 terminal:
+
+Test the web server locally from the EC2 terminal:
 
 ```bash
 curl http://localhost
 ```
 
-From a browser, open the current EC2 public IPv4 address using HTTP:
+Check the HTTP response:
+
+```bash
+curl -I http://localhost
+```
+
+Open the EC2 public IPv4 address in a web browser:
 
 ```text
 http://YOUR_EC2_PUBLIC_IP
 ```
 
-A successful response confirms that the web server can be reached through the configured network path and security-group rule.
+A successful response confirms that the web server is responding through the configured network path.
 
-## 9. Step 8 — Linux and Networking Commands Practiced
+## 9. Step 8 — Practice Linux Commands
 
-```bash
-pwd
-ls -la
-cd /path/to/directory
-whoami
-ip addr
-ip route
-ss -tuln
-ps aux
-sudo systemctl status apache2
-sudo systemctl restart apache2
-curl -I http://localhost
-```
+| Command | Purpose |
+|---|---|
+| `pwd` | Displays the current directory. |
+| `ls -la` | Lists files, including hidden files. |
+| `cd` | Changes the directory. |
+| `whoami` | Displays the current user. |
+| `mkdir` | Creates a directory. |
+| `touch` | Creates an empty file. |
+| `cat` | Displays file contents. |
+| `chmod` | Changes file permissions. |
+| `ps aux` | Displays running processes. |
+| `ip addr` | Displays network interfaces and IP addresses. |
+| `ip route` | Displays routing information. |
+| `ss -tuln` | Displays listening TCP and UDP ports. |
+| `systemctl status apache2` | Checks Apache service status. |
+| `curl -I http://localhost` | Checks an HTTP response. |
 
-The commands above are useful for checking the current directory, files, user, network interfaces, routes, listening ports, processes, services, and HTTP responses.
+## 10. Step 9 — Understand Networking Fundamentals
 
-## 10. Security Notes
-- Keep SSH access restricted to a trusted source IP.
-- Keep private SSH keys outside GitHub.
-- Allow only the ports required by the application.
-- Do not commit AWS credentials or other secrets.
-- Check the current public IP in the EC2 console before connecting.
+The following networking concepts were studied:
 
-## 11. Learning Outcomes
-- Practiced Linux package and service management.
+- **IP Addressing:** Identifies devices and network interfaces.
+- **DNS:** Translates domain names into IP addresses.
+- **Ports:** Identify services running on a system.
+- **Firewall:** Controls network traffic.
+- **Security Groups:** Control access to AWS resources.
+- **SSH:** Provides secure remote terminal access.
+- **HTTP:** Protocol used to transfer web content.
+
+## 11. Security Best Practices
+
+- Keep SSH access restricted to a trusted IP.
+- Never share private SSH keys.
+- Allow only required network ports.
+- Avoid committing credentials and passwords to GitHub.
+- Regularly update the operating system.
+- Check the current EC2 public IP before connecting.
+
+## 12. Learning Outcomes
+
 - Created an Ubuntu EC2 instance.
-- Used SSH to access a cloud Linux server.
-- Configured inbound network access with a security group.
-- Practiced basic IP, route, port, process, and connectivity checks.
+- Practiced SSH connectivity.
+- Updated and managed a Linux server.
+- Installed and checked Apache.
+- Practiced Linux CLI commands.
+- Learned basic IP addressing and networking.
+- Configured AWS security-group rules.
+- Tested local and public HTTP connectivity.
 
 ---
 
 # Module 03 — Cloud Services & Web App Deployment
+
 **Duration:** Day 11–Day 15
 
 ## 1. Objective
-Explore cloud compute, storage, networking, IAM, and monitoring services, then develop and deploy a web application to cloud compute infrastructure.
 
-## 2. Step 1 — Develop the Web Application Locally
+Explore cloud compute, storage, networking, IAM, and monitoring services. Develop a web application and deploy it on cloud infrastructure.
 
-**Where:** Windows PC → Visual Studio Code
+## 2. Step 1 — Develop a Web Application
 
-I created a simple responsive website using HTML, CSS, and JavaScript.
+**Platform:** Windows PC with Visual Studio Code
 
-### Project files
+A simple responsive web application was developed using:
+
+- HTML
+- CSS
+- JavaScript
+
+### Project Structure
 
 ```text
 app/
@@ -237,11 +328,15 @@ app/
 └── script.js
 ```
 
-- `index.html` defines the page structure and content.
-- `style.css` controls the layout, colors, cards, spacing, and responsive design.
-- `script.js` adds interaction to the Test Application button.
+### File Descriptions
 
-The button displays the message:
+| File | Purpose |
+|---|---|
+| `index.html` | Defines the structure and content of the web page. |
+| `style.css` | Controls the design, layout, colors, and responsiveness. |
+| `script.js` | Adds JavaScript functionality and user interaction. |
+
+The application includes a test button that displays:
 
 ```text
 Application is working successfully!
@@ -249,33 +344,39 @@ Application is working successfully!
 
 ## 3. Step 2 — Test the Application Locally
 
-Open `app/index.html` in a browser and verify:
+Open `app/index.html` in a web browser.
 
-1. The page loads without errors.
-2. CSS styling and layout display correctly.
-3. The application content and cards are visible.
-4. The JavaScript button displays the success message.
+Verify the following:
 
-## 4. Step 3 — Initialize Git and Track the Project
+1. The website loads correctly.
+2. The HTML content is visible.
+3. CSS styling is applied.
+4. The page layout displays correctly.
+5. The JavaScript test button works.
 
-**Where:** Windows PowerShell / CMD
+## 4. Step 3 — Initialize Git
 
-Move to the project directory. Example:
+Open PowerShell and navigate to the project directory:
 
 ```powershell
 cd "C:\Users\Tejas\Documents\Cloud-DevOps\cloud-web-app-deployment"
+```
+
+Initialize Git:
+
+```bash
 git init
 git status
 ```
 
-Configure Git identity if it has not already been configured:
+Configure Git identity if required:
 
 ```bash
 git config --global user.name "Tejas Kondhalkar"
 git config --global user.email "YOUR_GIT_EMAIL"
 ```
 
-Stage and commit the application:
+Add and commit the project files:
 
 ```bash
 git add .
@@ -284,7 +385,7 @@ git commit -m "Add cloud web application"
 
 ## 5. Step 4 — Push the Application to GitHub
 
-Create the repository on GitHub, then connect the local project:
+Connect the local repository to GitHub:
 
 ```bash
 git remote add origin https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment.git
@@ -292,31 +393,62 @@ git branch -M main
 git push -u origin main
 ```
 
-If the remote named `origin` already exists, check it with `git remote -v` rather than adding it again.
+If the `origin` remote already exists, check it first:
+
+```bash
+git remote -v
+```
+
+The GitHub repository stores the project source code and tracks changes.
 
 ## 6. Step 5 — Clone the Repository on EC2
 
-**Where:** Ubuntu EC2 SSH terminal
+Connect to the Ubuntu EC2 instance using SSH.
+
+Clone the repository:
 
 ```bash
 cd /tmp
 git clone https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment.git
+```
+
+Check the application files:
+
+```bash
 ls /tmp/cloud-web-app-deployment/app
 ```
 
-Confirm that `index.html`, `style.css`, and `script.js` are present.
+Verify that the HTML, CSS, and JavaScript files are present.
 
-## 7. Step 6 — Deploy the Website to the EC2 Web Server
+## 7. Step 6 — Deploy the Website Using Apache
 
-The initial deployment exercise used Apache on Ubuntu. Apache serves website files from `/var/www/html/`.
+The initial web deployment exercise used Apache on Ubuntu.
+
+Apache's default web directory is:
+
+```text
+/var/www/html/
+```
+
+Copy the application files:
 
 ```bash
 sudo cp /tmp/cloud-web-app-deployment/app/* /var/www/html/
+```
+
+Restart Apache:
+
+```bash
 sudo systemctl restart apache2
+```
+
+Check Apache status:
+
+```bash
 sudo systemctl status apache2
 ```
 
-## 8. Step 7 — Verify the Live Application
+## 8. Step 7 — Verify the Deployed Application
 
 From the EC2 terminal:
 
@@ -324,233 +456,161 @@ From the EC2 terminal:
 curl -I http://localhost
 ```
 
-From a browser, open the current EC2 public IPv4 address:
+From a browser:
 
 ```text
 http://YOUR_EC2_PUBLIC_IP
 ```
 
-Verify that the web page, styling, and JavaScript interaction work.
+Verify that the application loads and that its CSS and JavaScript functionality work correctly.
 
-## 9. Step 8 — Understand the AWS Services Used
+## 9. Step 8 — Understand AWS Services Used
 
-| AWS service | Role in this project |
+| AWS Service | Role |
 |---|---|
-| EC2 | Runs the Ubuntu cloud server and web application |
-| VPC | Provides the virtual network for cloud resources |
-| Security Group | Controls inbound and outbound instance traffic |
-| IAM | Controls identities, roles, and permissions |
-| S3 | Object-storage service explored as part of AWS fundamentals |
-| CloudWatch | Monitors EC2 metrics and alarms in Module 06 |
+| Amazon EC2 | Hosts the Ubuntu cloud server and web application. |
+| Amazon VPC | Provides virtual networking. |
+| Security Groups | Control inbound and outbound traffic. |
+| AWS IAM | Manages identities, roles, and permissions. |
+| Amazon S3 | Provides object storage. |
+| Amazon CloudWatch | Monitors infrastructure metrics and alarms. |
 
-**Deployment clarification:** The Apache commands above document the initial web-server deployment exercise. The current capstone deployment uses Nginx inside Docker and Docker Compose, as documented in Modules 04–06. This project README does not claim a managed database integration is complete.
-
-## 10. Learning Outcomes
-
-- Created and tested an HTML, CSS, and JavaScript web application.
-- Used Git and GitHub to track and store source code.
-- Cloned the project onto an Ubuntu EC2 instance.
-- Deployed the website to a Linux web-server directory.
-- Tested local and public HTTP connectivity.
-- Identified how AWS compute, networking, security, storage, and monitoring services fit into a deployment.
-
-## 3. Step 2 — Download the Project to the EC2 Server
-**Where:** EC2 SSH terminal
-
-The GitHub repository was cloned to the server:
-
-```bash
-cd /tmp
-git clone https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment.git
-ls /tmp/cloud-web-app-deployment/app
-```
-
-The application directory contains the website files, including `index.html`, `style.css`, and `script.js`.
-
-## 4. Step 3 — Deploy the Application to the Web Server
-The initial EC2 deployment exercise used Apache's default web directory:
-
-```bash
-sudo cp /tmp/cloud-web-app-deployment/app/* /var/www/html/
-sudo systemctl restart apache2
-```
-
-## 5. Step 4 — Verify the Deployed Website
-Open the current EC2 public IPv4 address in a browser:
+## 10. Deployment Architecture
 
 ```text
-http://YOUR_EC2_PUBLIC_IP
+       Web Application
+        HTML / CSS / JS
+               |
+               v
+          Git Repository
+               |
+               v
+             GitHub
+               |
+               v
+         AWS EC2 Ubuntu
+               |
+               v
+        Apache Web Server
+               |
+               v
+        Live Web Application
 ```
 
-The website was checked for correct HTML content, CSS styling, and JavaScript button behavior. The application displayed a successful test message when the button was clicked.
+**Deployment clarification:** The Apache steps document the initial web-server deployment exercise. The current capstone application is deployed using Nginx inside Docker and Docker Compose, as documented in Modules 04–06.
 
-## 6. Step 5 — Deployment Flow
+## 11. Learning Outcomes
 
-```text
-Local HTML / CSS / JavaScript
-             |
-             v
-        Git & GitHub
-             |
-             v
-       AWS EC2 Ubuntu
-             |
-             v
-     Web Server (initially Apache)
-             |
-             v
-      Live Web Application
-```
-
-## 7. Step 6 — Cloud Services Used in the Project
-- **EC2:** Hosted the Ubuntu server and application.
-- **VPC and Security Groups:** Provided network isolation and inbound traffic controls.
-- **IAM:** Provided roles and permissions for AWS service access in the later deployment workflow.
-- **CloudWatch:** Used for infrastructure monitoring in Module 06.
-- **S3:** Explored as an AWS object-storage service.
-
-**Implementation scope:** The verified live application described in the capstone section is served by Nginx in Docker on EC2. The Apache steps above document the initial server-deployment exercise. A managed database integration is not claimed as complete in this README.
-
-## 8. Learning Outcomes
 - Developed a basic web application.
-- Used GitHub as the source repository.
-- Deployed web files to an Ubuntu EC2 server.
-- Tested the website through a public HTTP endpoint.
-- Explored the role of AWS compute, storage, networking, IAM, and monitoring services.
+- Practiced HTML, CSS, and JavaScript.
+- Used Git for version control.
+- Created and updated a GitHub repository.
+- Cloned source code onto an EC2 instance.
+- Deployed web files using Apache.
+- Tested HTTP connectivity.
+- Understood how cloud compute, storage, networking, IAM, and monitoring services support an application deployment.
 
 ---
 
 # Module 04 — Docker & Containerization
+
 **Duration:** Day 16–Day 20
 
-## Overview
+## 1. Objective
 
-This module demonstrates how to containerize a web application using Docker and Docker Compose.
+Understand containerization and Docker architecture. Learn Docker images, containers, Dockerfiles, port mapping, networking, environment variables, volumes, and Docker Compose.
 
-### Technologies Used
+## 2. Tools and Technologies
 
-* Docker Desktop
-* Docker
-* Dockerfile
-* Docker Compose
-* Nginx
-* Git
-* GitHub
+- Docker Desktop
+- Docker
+- Dockerfile
+- Docker Compose
+- Nginx
+- Git
+- GitHub
 
----
+## 3. Step 1 — Verify Docker Installation
 
-# Step 1 — Verify Docker Installation
-
-### Command
+Check the Docker version:
 
 ```bash
 docker --version
 ```
 
-### What it does
+Check Docker Compose:
 
-Displays the installed Docker version and confirms that Docker is available from the command line.
+```bash
+docker compose version
+```
 
-### Result
+These commands verify that Docker and Docker Compose are available.
 
-Docker was successfully installed and verified.
+## 4. Step 2 — Test Docker Installation
 
----
-
-# Step 2 — Test Docker Installation
-
-### Command
+Run the test container:
 
 ```bash
 docker run hello-world
 ```
 
-### What it does
+This command downloads the image if required, creates a container, and executes it.
 
-Downloads the `hello-world` Docker image if it is not available locally, creates a container from that image, and runs it.
+The `Hello from Docker!` message confirms that Docker can run a container successfully.
 
-This is a basic test to confirm that Docker can:
+## 5. Step 3 — Explore Docker Images
 
-1. Download an image
-2. Create a container
-3. Start the container
-4. Run an application inside the container
-
-### Result
-
-The Docker installation successfully displayed the `Hello from Docker!` message.
-
----
-
-# Step 3 — Check Docker Images
-
-### Command
+Display available images:
 
 ```bash
 docker images
 ```
 
-### What it does
+Docker images are read-only templates used to create containers.
 
-Lists the Docker images currently available on the local computer.
+## 6. Step 4 — Explore Docker Containers
 
-### Result
-
-The `hello-world` image was visible in the local image list.
-
----
-
-# Step 4 — Check Docker Containers
-
-### Command
+Display all containers:
 
 ```bash
 docker ps -a
 ```
 
-### What it does
+Display only running containers:
 
-Displays all Docker containers, including containers that are currently stopped.
+```bash
+docker ps
+```
 
-### Result
+A container is an isolated running instance created from a Docker image.
 
-The containers created while testing `hello-world` were displayed.
+## 7. Step 5 — Run an Nginx Container
 
----
-
-# Step 5 — Run an Nginx Container
-
-### Command
+Run Nginx locally:
 
 ```bash
 docker run -d -p 8080:80 --name my-web-server nginx
 ```
 
-### What it does
+### Command Explanation
 
-This command creates and starts an Nginx container.
+- `docker run` creates and starts a container.
+- `-d` runs it in the background.
+- `-p 8080:80` maps host port 8080 to container port 80.
+- `--name` assigns a container name.
+- `nginx` specifies the Docker image.
 
-Explanation:
-
-* `docker run` → Creates and starts a container
-* `-d` → Runs the container in detached/background mode
-* `-p 8080:80` → Maps local port `8080` to container port `80`
-* `--name my-web-server` → Gives the container a custom name
-* `nginx` → Uses the Nginx Docker image
-
-### Result
-
-The Nginx web server was successfully accessed through:
+Open the application:
 
 ```text
 http://localhost:8080
 ```
 
----
+This verifies that the Nginx container is serving a web page.
 
-# Step 6 — Create the Dockerfile
+## 8. Step 6 — Create a Dockerfile
 
-A file named `Dockerfile` was created in the project root.
+A Dockerfile was created in the project root.
 
 ### Dockerfile
 
@@ -562,881 +622,133 @@ COPY app/ /usr/share/nginx/html/
 EXPOSE 80
 ```
 
-### What each line does
+### Explanation
 
-#### `FROM nginx:alpine`
+**FROM nginx:alpine**
 
 Uses the lightweight Nginx Alpine image as the base image.
 
-#### `COPY app/ /usr/share/nginx/html/`
+**COPY app/ /usr/share/nginx/html/**
 
-Copies the web application files from the local `app` directory into the directory where Nginx serves web content.
+Copies the application files into the Nginx web directory inside the container.
 
-#### `EXPOSE 80`
+**EXPOSE 80**
 
-Documents that the application inside the container uses port `80`.
+Documents the port used by the web server inside the container.
 
----
+## 9. Step 7 — Build a Custom Docker Image
 
-# Step 7 — Build the Custom Docker Image
-
-### Command
+Build the image:
 
 ```bash
 docker build -t cloud-web-app .
 ```
 
-### What it does
-
-Builds a Docker image using the Dockerfile in the current directory.
-
 Explanation:
 
-* `docker build` → Builds a Docker image
-* `-t cloud-web-app` → Gives the image the name `cloud-web-app`
-* `.` → Uses the current directory as the build context
+- `docker build` builds an image.
+- `-t cloud-web-app` assigns the image name.
+- `.` specifies the current directory as the build context.
 
-### Result
-
-A custom Docker image named:
-
-```text
-cloud-web-app
-```
-
-was successfully created.
-
----
-
-# Step 8 — Check the Custom Image
-
-### Command
+Check the image:
 
 ```bash
 docker images
 ```
 
-### What it does
+The custom image should appear in the image list.
 
-Displays all locally available Docker images.
+## 10. Step 8 — Run the Custom Web Application Container
 
-### Result
-
-The custom image was visible:
-
-```text
-cloud-web-app
-```
-
----
-
-# Step 9 — Run the Custom Web Application Container
-
-### Command
+Run the custom image:
 
 ```bash
 docker run -d -p 8081:80 --name cloud-web-container cloud-web-app
 ```
 
-### What it does
-
-Creates and starts a container using the custom `cloud-web-app` image.
-
-Explanation:
-
-* `-d` → Runs in the background
-* `-p 8081:80` → Maps local port `8081` to container port `80`
-* `--name cloud-web-container` → Gives the container a name
-* `cloud-web-app` → Uses the custom image
-
-### Result
-
-The web application was successfully accessed through:
+Open the application:
 
 ```text
 http://localhost:8081
 ```
 
----
+This verifies that the custom Docker image can serve the web application.
 
-# Step 10 — Check Running Containers
+## 11. Step 9 — Inspect the Container
 
-### Command
+Check running containers:
 
 ```bash
 docker ps
 ```
 
-### What it does
-
-Displays currently running Docker containers.
-
-### Result
-
-The custom web container was shown as running.
-
----
-
-# Step 11 — Inspect the Container
-
-### Command
+Inspect a container:
 
 ```bash
 docker inspect cloud-web-container
 ```
 
-### What it does
+Container inspection provides information about:
 
-Displays detailed information about the container.
+- Container configuration.
+- Network settings.
+- Port mappings.
+- Environment variables.
+- Mounts.
+- Container state.
 
-It can provide information about:
+## 12. Step 10 — Explore Docker Networking
 
-* Container configuration
-* Network configuration
-* Port mappings
-* Mounts
-* Environment
-* Container state
-
-### Result
-
-The configuration of the custom web container was inspected successfully.
-
----
-
-# Step 12 — Check Docker Networks
-
-### Command
+List Docker networks:
 
 ```bash
 docker network ls
 ```
 
-### What it does
+Docker networking enables containers to communicate with one another and with external networks.
 
-Lists the Docker networks available on the system.
+## 13. Step 11 — Practice Environment Variables
 
-Docker networks allow containers to communicate with each other and with external networks.
-
-### Result
-
-The available Docker networks were displayed.
-
----
-
-# Step 13 — Test Environment Variables
-
-### Command
+Run a temporary container:
 
 ```bash
 docker run --rm -e APP_ENV=development nginx:alpine env
 ```
 
-### What it does
-
-Runs a temporary Nginx container and passes an environment variable into it.
-
 Explanation:
 
-* `--rm` → Automatically removes the container after it exits
-* `-e APP_ENV=development` → Creates the environment variable
-* `nginx:alpine` → Uses the Nginx Alpine image
-* `env` → Displays environment variables inside the container
+- `--rm` removes the container after it exits.
+- `-e` sets an environment variable.
+- `APP_ENV=development` is the variable passed to the container.
+- `env` displays environment variables.
 
-### Result
+This demonstrates how configuration values can be passed into containers.
 
-The following variable was displayed:
+## 14. Step 12 — Create a Docker Volume
 
-```text
-APP_ENV=development
-```
-
-This confirmed that environment variables can be passed into containers.
-
----
-
-# Step 14 — Create a Docker Volume
-
-### Command
+Create a volume:
 
 ```bash
 docker volume create cloud-web-data
 ```
 
-### What it does
-
-Creates a Docker-managed volume named `cloud-web-data`.
-
-Docker volumes can be used to store persistent data separately from the container's writable layer.
-
-### Result
-
-The volume was successfully created.
-
----
-
-# Step 15 — Check Docker Volumes
-
-### Command
+List volumes:
 
 ```bash
 docker volume ls
 ```
 
-### What it does
+Docker volumes provide persistent storage separately from a container's writable layer.
 
-Lists Docker volumes available on the system.
+## 15. Step 13 — Create Docker Compose Configuration
 
-### Result
-
-The following volume was displayed:
-
-```text
-cloud-web-data
-```
-
----
-
-# Step 16 — Create Docker Compose Configuration
-
-A file named:
+Create a file named:
 
 ```text
 docker-compose.yml
 ```
 
-was created in the project root.
-
-### Configuration
-
-```yaml
-services:
-  web:
-    build: .
-    container_name: cloud-web-compose
-    ports:
-      - "8082:80"
-    environment:
-      APP_ENV: production
-```
-
-### What it does
-
-Docker Compose defines how the web application should be built and run.
-
-Explanation:
-
-#### `build: .`
-
-Builds the Docker image using the Dockerfile in the current directory.
-
-#### `container_name: cloud-web-compose`
-
-Sets the container name.
-
-#### `ports`
-
-Maps:
-
-```text
-localhost:8082 → container:80
-```
-
-#### `environment`
-
-Sets:
-
-```text
-APP_ENV=production
-```
-
-inside the container.
-
----
-
-# Step 17 — Validate Docker Compose Configuration
-
-### Command
-
-```bash
-docker compose config
-```
-
-### What it does
-
-Validates and displays the Docker Compose configuration after Docker processes the file.
-
-This helps identify configuration or YAML errors before starting the application.
-
-### Result
-
-The Compose configuration was successfully validated.
-
----
-
-# Step 18 — Start the Application Using Docker Compose
-
-### Command
-
-```bash
-docker compose up -d
-```
-
-### What it does
-
-Builds the required image and starts the services defined in `docker-compose.yml`.
-
-Explanation:
-
-* `docker compose` → Uses Docker Compose
-* `up` → Creates and starts the services
-* `-d` → Runs them in the background
-
-### Result
-
-The `cloud-web-compose` container was successfully started.
-
----
-
-# Step 19 — Check Docker Compose Services
-
-### Command
-
-```bash
-docker compose ps
-```
-
-### What it does
-
-Displays the status of the services managed by Docker Compose.
-
-### Result
-
-The web service was shown as running with port mapping:
-
-```text
-8082 → 80
-```
-
----
-
-# Step 20 — Test the Docker Compose Web Application
-
-The application was opened in a web browser:
-
-```text
-http://localhost:8082
-```
-
-### Result
-
-The web application loaded successfully through Docker Compose.
-
----
-
-# Step 21 — Stop Docker Compose Services
-
-### Command
-
-```bash
-docker compose down
-```
-
-### What it does
-
-Stops and removes the containers and network created by Docker Compose.
-
-It is useful for cleaning up the running Compose environment.
-
----
-
-# Step 22 — Start Docker Compose Again
-
-### Command
-
-```bash
-docker compose up -d
-```
-
-### What it does
-
-Creates/starts the Compose services again in detached mode.
-
-### Result
-
-The application started successfully again.
-
-This verified that the application can be stopped and recreated using Docker Compose.
-
----
-
-# Step 23 — Check Git Status
-
-After completing the Docker work, Git was used to check the project status.
-
-### Command
-
-```bash
-git status
-```
-
-### What it does
-
-Shows:
-
-* Current Git branch
-* Changes
-* Untracked files
-* Staged files
-* Whether the working tree is clean
-
-Docker-related files included:
-
-```text
-Dockerfile
-docker-compose.yml
-.dockerignore
-```
-
----
-
-# Step 24 — Add Docker Files to Git
-
-### Command
-
-```bash
-git add Dockerfile docker-compose.yml .dockerignore
-```
-
-### What it does
-
-Stages the Docker-related files so they can be included in the next Git commit.
-
----
-
-# Step 25 — Commit Docker Changes
-
-### Command
-
-```bash
-git commit -m "Add Docker containerization"
-```
-
-### What it does
-
-Creates a Git commit containing the staged Docker-related changes.
-
-The commit provides a record of when the Docker implementation was added.
-
----
-
-# Step 26 — Synchronize with GitHub
-
-Before pushing, the local repository was synchronized with the existing GitHub repository.
-
-### Command
-
-```bash
-git pull origin main --allow-unrelated-histories
-```
-
-### What it does
-
-Downloads changes from the GitHub `main` branch and merges them into the local `main` branch.
-
-The `--allow-unrelated-histories` option allows Git to merge histories that were not previously connected.
-
-### Result
-
-The existing GitHub files were successfully merged with the local Docker project.
-
----
-
-# Step 27 — Check Git Status Again
-
-### Command
-
-```bash
-git status
-```
-
-### Result
-
-The repository showed:
-
-```text
-Your branch is ahead of 'origin/main' by 2 commits.
-nothing to commit, working tree clean
-```
-
-This confirmed that the local Docker changes were committed and ready to be pushed.
-
----
-
-# Step 28 — Push Docker Work to GitHub
-
-### Command
-
-```bash
-git push origin main
-```
-
-### What it does
-
-Uploads the local commits from the `main` branch to the GitHub repository.
-
-### Result
-
-The Docker implementation was successfully pushed to GitHub.
-
----
-
-# Final Project Structure
-
-```text
-cloud-web-app-deployment/
-│
-├── app/
-│   ├── index.html
-│   ├── script.js
-│   └── style.css
-│
-├── Dockerfile
-├── docker-compose.yml
-├── .dockerignore
-├── screenshots/
-└── README.md
-```
-
-# Docker Workflow
-
-```text
-Web Application
-      ↓
-Dockerfile
-      ↓
-Docker Image
-      ↓
-Docker Container
-      ↓
-Port Mapping
-      ↓
-Docker Networking
-      ↓
-Environment Variables
-      ↓
-Docker Volume
-      ↓
-Docker Compose
-      ↓
-Running Web Application
-```
-
-# Key Learning Outcomes
-
-After completing this module, I practiced:
-
-* Docker installation and verification
-* Docker images
-* Docker containers
-* Nginx containers
-* Dockerfiles
-* Building custom images
-* Port mapping
-* Container inspection
-* Docker networking
-* Environment variables
-* Docker volumes
-* Docker Compose
-* Container lifecycle management
-* Git version control
-* Pushing Docker projects to GitHub
-
-# Result
-
-The web application was successfully containerized using Docker and Docker Compose and tested locally through different container configurations.
-
-## Repository
-
-GitHub Repository:
-
-https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
-
----
-
-# Module 05 — DevOps, CI/CD & Monitoring
-
-## 1. Objective
-
-Implement a Continuous Integration and Continuous Deployment (CI/CD) pipeline using GitHub Actions to validate a web application, build its Docker image, and deploy updates to an AWS EC2 instance through AWS Systems Manager (SSM).
-
-## 2. Tools and Technologies
-
-- Git and GitHub
-- GitHub Actions
-- HTML, CSS, and JavaScript
-- Docker and Docker Compose
-- AWS EC2
-- AWS Systems Manager (SSM)
-- AWS IAM
-- GitHub OIDC authentication
-
-## 3. Project Workflow
-
-1. Make changes to the application or project files.
-2. Push the changes to the `main` branch on GitHub.
-3. GitHub Actions starts the CI workflow.
-4. The workflow checks the required application files.
-5. JavaScript syntax and basic HTML structure are validated.
-6. Docker builds the application image.
-7. After successful testing, the deployment job authenticates with AWS using OIDC.
-8. GitHub Actions sends deployment commands to EC2 through SSM.
-9. EC2 pulls the latest code and rebuilds the application using Docker Compose.
-10. The deployment result is checked in GitHub Actions.
-
-## 4. Workflow File
-
-Location:
-
-`.github/workflows/ci-cd.yml`
-
-This file defines the automated build, test, and deployment jobs.
-
-## 5. CI — Continuous Integration
-
-The CI job performs the following checks:
-
-- Checks out the repository.
-- Configures Node.js.
-- Verifies that required HTML, CSS, and JavaScript files exist.
-- Checks JavaScript syntax.
-- Validates essential HTML tags.
-- Builds the Docker image.
-
-These checks help identify application and build errors before deployment.
-
-## 6. CD — Continuous Deployment
-
-The deployment job runs after the build-and-test job succeeds and is configured for pushes to `main`.
-
-The deployment process:
-
-1. Configures AWS credentials using GitHub OIDC.
-2. Verifies the AWS identity.
-3. Sends a command to the EC2 instance using AWS Systems Manager.
-4. Pulls the latest repository changes.
-5. Builds and starts the application using Docker Compose.
-6. Checks the deployment command status and displays diagnostic output if it fails.
-
-## 7. Important Docker Commands
-
-### Check running containers
-
-```bash
-docker ps
-```
-
-### Check all containers
-
-```bash
-docker ps -a
-```
-
-### Validate Docker Compose configuration
-
-```bash
-docker compose config
-```
-
-### Build and start the application
-
-```bash
-docker compose up -d --build
-```
-
-### Check Compose service status
-
-```bash
-docker compose ps
-```
-
-### View application logs
-
-```bash
-docker compose logs --tail=50
-```
-
-### Test Nginx configuration
-
-```bash
-docker exec cloud-web-compose nginx -t
-```
-
-### Test the local application endpoint
-
-```bash
-curl -I http://localhost
-```
-
-## 8. AWS Configuration
-
-The deployment uses:
-
-- An Ubuntu EC2 instance.
-- Docker and Docker Compose installed on the instance.
-- An IAM instance role that allows Systems Manager access.
-- An IAM deployment role assumed by GitHub Actions through OIDC.
-- The GitHub repository secret `AWS_ROLE_ARN`.
-- A security group that permits the required application traffic.
-
-Sensitive credentials and private keys must never be committed to the repository.
-
-## 9. How to Trigger the Pipeline
-
-From the project directory on your computer, make a small change to a file.
-
-Check the changes:
-
-```bash
-git status
-```
-
-Stage the change:
-
-```bash
-git add .
-```
-
-Commit the change:
-
-```bash
-git commit -m "Update CI/CD project"
-```
-
-Push the change:
-
-```bash
-git push origin main
-```
-
-Open the repository's **Actions** tab to monitor the workflow.
-
-## 10. Verification and Results
-
-The completed pipeline was verified through these checks:
-
-- GitHub Actions build-and-test job succeeded.
-- Docker image build succeeded.
-- AWS authentication and SSM deployment job succeeded.
-- The Docker container was running on EC2.
-- Nginx configuration validation succeeded.
-- A local HTTP request returned `200 OK`.
-- The live application opened successfully in a browser.
-
-## 11. Troubleshooting
-
-| Issue | What to check |
-|---|---|
-| Workflow fails during testing | Review the build-and-test logs. |
-| AWS authentication fails | Check the OIDC provider, IAM trust policy, and `AWS_ROLE_ARN` secret. |
-| SSM command fails | Check the EC2 instance's SSM status, IAM permissions, and command output. |
-| Git reports dubious ownership | Verify repository ownership and Git safe-directory configuration. |
-| Docker container is not running | Inspect `docker ps -a` and the Compose logs. |
-| Website does not open | Check the current EC2 public IP, security group, port mapping, and network configuration. |
-
-## 12. Learning Outcomes
-
-- Understanding CI/CD concepts.
-- Automating application validation with GitHub Actions.
-- Building Docker images in a CI workflow.
-- Deploying applications to AWS EC2.
-- Using AWS Systems Manager for remote deployment.
-- Configuring GitHub OIDC authentication with AWS IAM.
-- Troubleshooting deployment and connectivity issues.
-
-## 13. Repository
-
-GitHub repository:
-
-https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
-
-The production Docker Compose configuration maps host port `80` to container port `80`. The EC2 public IPv4 address can change after a stop/start unless an Elastic IP is configured. Check the AWS EC2 console for the current address before sharing the live URL.
-
-
-
-
-
-
-
-
-
-
-
-
----
-
----
-
-# Module 06 — Cloud & DevOps Capstone Project
-**Duration:** Day 26–Day 30
-
-## 1. Objective
-Build, containerize, automate, deploy, and monitor a real web application by integrating cloud infrastructure, Git, Docker, CI/CD, monitoring, and managed database/authentication services where implemented.
-
-## 2. Capstone Architecture
-
-The verified deployment architecture for the current web application is:
-
-```text
-Developer
-   |
-   v
-GitHub Repository
-   |
-   v
-GitHub Actions
-   |
-   +---- CI: validate files and build Docker image
-   |
-   +---- CD: AWS OIDC authentication
-                 |
-                 v
-          AWS Systems Manager
-                 |
-                 v
-          AWS EC2 (Ubuntu)
-                 |
-                 v
-          Docker Compose
-                 |
-                 v
-          Nginx Container
-                 |
-                 v
-          Live Web Application
-                 |
-                 v
-        CloudWatch + Health Check
-```
-
-## 3. Step 1 — Review the Application and Source Repository
-- Confirm the application source files are present in the `app/` directory.
-- Confirm the Dockerfile and Compose configuration are in the repository root.
-- Keep the GitHub repository updated with the completed project files.
-
-Repository: https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
-
-## 4. Step 2 — Review the Container Configuration
-
-### Dockerfile
-
-```dockerfile
-FROM nginx:alpine
-COPY app/ /usr/share/nginx/html/
-EXPOSE 80
-```
-
-### Docker Compose
+### Current Project Configuration
 
 ```yaml
 services:
@@ -1449,129 +761,593 @@ services:
       APP_ENV: production
 ```
 
-The current production configuration maps host port 80 to container port 80.
+### Explanation
 
-## 5. Step 3 — Review Automated Deployment
-The GitHub Actions workflow is stored at:
+- `services` defines the application services.
+- `web` is the web application service.
+- `build: .` builds the image from the current directory.
+- `container_name` assigns the name `cloud-web-compose`.
+- `ports` maps host port 80 to container port 80.
+- `environment` sets the application environment variable.
+
+## 16. Step 14 — Validate Docker Compose Configuration
+
+Run:
+
+```bash
+docker compose config
+```
+
+This validates and displays the processed Compose configuration.
+
+## 17. Step 15 — Start the Application Using Docker Compose
+
+Build and start the application:
+
+```bash
+docker compose up -d --build
+```
+
+This command builds the image if required and starts the application in detached mode.
+
+## 18. Step 16 — Verify Docker Compose Services
+
+Check the services:
+
+```bash
+docker compose ps
+```
+
+Check running containers:
+
+```bash
+docker ps
+```
+
+The current project container is:
+
+```text
+cloud-web-compose
+```
+
+The current port mapping is:
+
+```text
+0.0.0.0:80 -> 80/tcp
+```
+
+## 19. Step 17 — Test the Web Application
+
+Open the local application:
+
+```text
+http://localhost
+```
+
+For the deployed EC2 application, open:
+
+```text
+http://YOUR_EC2_PUBLIC_IP
+```
+
+The web application was verified to load successfully through the Docker Compose deployment.
+
+## 20. Step 18 — Manage the Container Lifecycle
+
+Stop and remove Compose services:
+
+```bash
+docker compose down
+```
+
+Start them again:
+
+```bash
+docker compose up -d
+```
+
+Check logs:
+
+```bash
+docker compose logs --tail=50
+```
+
+These commands help manage and troubleshoot the application lifecycle.
+
+## 21. Step 19 — Add Docker Files to Git
+
+Check project status:
+
+```bash
+git status
+```
+
+Add Docker-related files:
+
+```bash
+git add Dockerfile docker-compose.yml .dockerignore
+```
+
+Commit the changes:
+
+```bash
+git commit -m "Add Docker containerization"
+```
+
+Push the changes:
+
+```bash
+git push origin main
+```
+
+## 22. Docker Workflow
+
+```text
+       Web Application
+              |
+              v
+          Dockerfile
+              |
+              v
+          Docker Image
+              |
+              v
+        Docker Container
+              |
+              v
+         Port Mapping
+              |
+              v
+       Docker Networking
+              |
+              v
+       Environment Variables
+              |
+              v
+        Docker Compose
+              |
+              v
+       Running Application
+```
+
+## 23. Final Project Structure
+
+```text
+cloud-web-app-deployment/
+│
+├── app/
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+│
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml
+│
+├── Dockerfile
+├── docker-compose.yml
+├── .dockerignore
+└── README.md
+```
+
+## 24. Learning Outcomes
+
+- Installed and verified Docker.
+- Practiced Docker images and containers.
+- Ran Nginx containers.
+- Created a custom Dockerfile.
+- Built custom Docker images.
+- Practiced port mapping.
+- Inspected containers.
+- Explored Docker networking.
+- Practiced environment variables.
+- Created Docker volumes.
+- Used Docker Compose.
+- Managed container lifecycle.
+- Integrated Docker files with Git and GitHub.
+
+---
+
+# Module 05 — DevOps, CI/CD & Monitoring
+
+**Duration:** Day 21–Day 25
+
+## 1. Objective
+
+Understand DevOps principles and implement Continuous Integration and Continuous Deployment using GitHub Actions.
+
+Automate application validation, Docker image building, and deployment to AWS EC2 through AWS Systems Manager.
+
+## 2. Tools and Technologies
+
+- Git and GitHub
+- GitHub Actions
+- Docker and Docker Compose
+- AWS EC2
+- AWS IAM
+- AWS Systems Manager (SSM)
+- GitHub OIDC authentication
+- Ubuntu Linux
+
+## 3. Step 1 — Understand DevOps
+
+DevOps combines development and operations practices to improve collaboration, automation, software delivery, and application reliability.
+
+### Key DevOps concepts
+
+- Version control.
+- Continuous Integration.
+- Continuous Delivery and Deployment.
+- Automated testing.
+- Infrastructure management.
+- Monitoring and logging.
+- Collaboration and feedback.
+
+## 4. Step 2 — Understand Git and GitHub Workflow
+
+Git is a version control system used to track changes in project files.
+
+GitHub hosts repositories and provides collaboration and automation features.
+
+Basic Git workflow:
+
+```bash
+git status
+git add .
+git commit -m "Update application"
+git push origin main
+```
+
+## 5. Step 3 — Create a GitHub Actions Workflow
+
+The workflow file is located at:
 
 ```text
 .github/workflows/ci-cd.yml
 ```
 
-The workflow validates the application, builds the Docker image, authenticates to AWS using GitHub OIDC, and sends deployment commands to EC2 through Systems Manager.
+GitHub Actions automates tasks when repository events occur.
 
-## 6. Step 4 — Review Monitoring and Health Checks
-The project includes:
-- A CloudWatch CPU utilization alarm.
-- A CloudWatch EC2 status-check alarm.
-- A Bash website health-check script.
-- A cron schedule that runs the check every minute.
-- A log file at `/var/log/website-health.log`.
+The workflow is configured to run for pushes and pull requests to the `main` branch, with manual workflow execution also supported.
 
-The detailed configuration and commands are documented in the monitoring section below.
+## 6. Step 4 — Implement Continuous Integration
 
-## 7. Step 5 — Managed Database and Authentication Integration
-The Codomax capstone objectives include managed database/authentication integration. The README does not currently record a verified, working managed database connection or end-to-end authentication flow. Amazon Cognito setup was explored, but it should only be marked complete after the user pool/app client and application sign-in flow are tested successfully. No database integration is claimed here.
+The CI job performs the following tasks:
 
-## 8. Step 6 — Verify the Live Deployment
+1. Checks out the repository.
+2. Configures Node.js.
+3. Checks required application files.
+4. Validates JavaScript syntax.
+5. Checks essential HTML structure.
+6. Builds the Docker image.
 
-| Item | Verified configuration at the time of checking |
+These checks help identify application and build issues before deployment.
+
+## 7. Step 5 — Implement Continuous Deployment
+
+The deployment job runs after the build-and-test job succeeds and is configured for pushes to `main`.
+
+### Deployment process
+
+1. GitHub Actions authenticates to AWS using OIDC.
+2. AWS credentials are configured through an IAM deployment role.
+3. The workflow verifies the AWS identity.
+4. AWS Systems Manager sends a command to the EC2 instance.
+5. EC2 pulls the latest project changes.
+6. Docker Compose rebuilds and starts the application.
+7. The workflow checks the deployment command status.
+
+## 8. Step 6 — Understand GitHub OIDC Authentication
+
+GitHub OIDC allows GitHub Actions to assume an AWS IAM role without storing long-lived AWS access keys in the repository.
+
+The deployment requires:
+
+- An AWS IAM OIDC identity provider.
+- An IAM role with an appropriate trust policy.
+- Permissions for the required deployment operations.
+- A GitHub repository secret containing the role ARN.
+
+This provides a more secure authentication approach than storing permanent AWS credentials.
+
+## 9. Step 7 — Configure AWS Systems Manager
+
+AWS Systems Manager is used to send remote deployment commands to the EC2 instance.
+
+The EC2 instance requires:
+
+- An appropriate IAM instance role.
+- Systems Manager permissions.
+- An active SSM Agent.
+- Connectivity to the Systems Manager service.
+
+The GitHub Actions deployment role requires permission to send the required SSM commands.
+
+## 10. Step 8 — Docker Deployment Commands
+
+Check running containers:
+
+```bash
+docker ps
+```
+
+Check all containers:
+
+```bash
+docker ps -a
+```
+
+Validate Compose configuration:
+
+```bash
+docker compose config
+```
+
+Build and start the application:
+
+```bash
+docker compose up -d --build
+```
+
+Check services:
+
+```bash
+docker compose ps
+```
+
+View application logs:
+
+```bash
+docker compose logs --tail=50
+```
+
+Test Nginx configuration:
+
+```bash
+docker exec cloud-web-compose nginx -t
+```
+
+Test local HTTP connectivity:
+
+```bash
+curl -I http://localhost
+```
+
+## 11. Step 9 — Trigger the CI/CD Pipeline
+
+From the local project directory, make a change to the application or project files.
+
+Check changes:
+
+```bash
+git status
+```
+
+Stage the changes:
+
+```bash
+git add .
+```
+
+Commit:
+
+```bash
+git commit -m "Update CI/CD project"
+```
+
+Push:
+
+```bash
+git push origin main
+```
+
+Open the GitHub repository and navigate to:
+
+**GitHub → Repository → Actions**
+
+Monitor the workflow and review the job logs.
+
+## 12. Step 10 — Verify the Pipeline
+
+The project pipeline was verified through the following checks:
+
+- GitHub Actions workflow executed successfully.
+- Application validation completed.
+- Docker image build succeeded.
+- AWS authentication through OIDC succeeded.
+- SSM deployment completed successfully.
+- Docker container was running on EC2.
+- Nginx configuration was checked.
+- Local HTTP request returned `200 OK`.
+- Live application opened successfully in a browser.
+
+## 13. Troubleshooting
+
+| Issue | What to Check |
 |---|---|
-| EC2 instance | `cloud-web-app-server` |
-| Instance type | `t3.micro` |
-| AWS Region | `us-east-1` (N. Virginia) |
-| Container | `cloud-web-compose` |
-| Web server | Nginx |
-| Host/container port | `80:80` |
-| Public URL at last verification | `http://54.90.156.63/` |
-| HTTP response | `200 OK` |
+| GitHub Actions workflow failure | Review workflow logs and failed job steps. |
+| AWS authentication failure | Check OIDC provider, IAM trust policy, and role ARN. |
+| SSM deployment failure | Check SSM Agent, instance role, and command output. |
+| Docker container stopped | Check `docker ps -a` and container logs. |
+| Compose configuration error | Run `docker compose config`. |
+| Website unavailable | Check EC2 public IP, security group, and port mapping. |
 
-The website was opened successfully during verification. The EC2 public IPv4 address may change after a stop/start unless an Elastic IP is configured. Check the EC2 console for the current address before sharing the live link. The site uses HTTP, not HTTPS.
+## 14. Learning Outcomes
 
-## 9. Step 7 — Final Capstone Deliverables
-
-| Deliverable | README / project location |
-|---|---|
-| GitHub repository | Project repository linked above |
-| Live deployment | EC2 public URL; verify current IP before submission |
-| Dockerfile | `Dockerfile` |
-| Docker Compose | `docker-compose.yml` |
-| CI/CD workflow | `.github/workflows/ci-cd.yml` |
-| Monitoring and health checks | CloudWatch alarms, Bash script, cron, and log |
-| Architecture diagram | Capstone architecture above |
-| Managed database/auth | Not yet documented as verified; update only after successful testing |
-
-## 10. Capstone Result
-The web application was containerized with Docker and Docker Compose, deployed to AWS EC2, automated through GitHub Actions and AWS Systems Manager, and monitored using CloudWatch alarms and a scheduled website health check.
+- Understood DevOps principles.
+- Practiced Git and GitHub workflows.
+- Learned CI/CD concepts.
+- Created an automated GitHub Actions workflow.
+- Automated application validation.
+- Built Docker images through CI.
+- Configured AWS OIDC authentication.
+- Used AWS Systems Manager for remote deployment.
+- Automated application deployment to EC2.
+- Practiced deployment troubleshooting.
 
 ---
 
-## Module 06 — Monitoring Implementation Details
+# Module 06 — Cloud & DevOps Capstone Project
 
-### AWS Monitoring and Health Checks
+**Duration:** Day 26–Day 30
 
 ## 1. Objective
 
-The objective of this module is to monitor the health and performance of the Cloud Web App deployed on AWS EC2 using Amazon CloudWatch and a custom website health-check script.
+Build, containerize, automate, deploy, and monitor a real web application.
 
-This module helps identify EC2 status-check failures, monitor CPU utilization, and verify that the web application is responding to HTTP requests.
+Integrate cloud infrastructure, Git, Docker, CI/CD, monitoring, and managed database/authentication services where implemented.
 
-## 2. Tools and Technologies
+## 2. Project Overview
 
-- Amazon EC2
-- Amazon CloudWatch
-- CloudWatch Alarms
-- Ubuntu Linux
-- Docker and Docker Compose
-- Nginx
-- Bash scripting
-- Cron scheduling
-- GitHub Actions
+The capstone project is a cloud-hosted web application deployed on AWS EC2 using Docker and Nginx.
 
-#### Current Live Deployment
+GitHub Actions automates application validation, Docker image building, and deployment through AWS Systems Manager.
 
-The completed application is deployed on an Ubuntu 24.04 EC2 instance and served by Nginx inside a Docker container managed with Docker Compose.
+Amazon CloudWatch and a scheduled Bash health-check script are used for basic monitoring.
 
-| Item | Current configuration |
+## 3. Technologies Used
+
+| Technology | Purpose |
 |---|---|
-| EC2 instance | `cloud-web-app-server` |
-| Instance type | `t3.micro` |
-| AWS Region | `us-east-1` (N. Virginia) |
-| Container | `cloud-web-compose` |
-| Web server | Nginx |
-| Host/container port | `80:80` |
-| Application URL at the time of verification | `http://54.90.156.63/` |
+| HTML | Web page structure |
+| CSS | Application styling |
+| JavaScript | Application interaction |
+| Git | Version control |
+| GitHub | Source code repository |
+| GitHub Actions | CI/CD automation |
+| AWS EC2 | Cloud compute infrastructure |
+| Ubuntu 24.04 | Server operating system |
+| Docker | Application containerization |
+| Docker Compose | Container management |
+| Nginx | Web server |
+| AWS IAM | Access management |
+| AWS Systems Manager | Remote deployment |
+| Amazon CloudWatch | Infrastructure monitoring |
+| Bash and Cron | Website health checks and scheduling |
 
-The live URL was opened successfully and returned an HTTP `200 OK` response during verification. The public IP is automatically assigned and may change after an EC2 stop/start; verify the current IP in the EC2 console before sharing it. The site currently uses HTTP, not HTTPS.
+## 4. Step 1 — Review the Application Source Code
 
+The web application source code is maintained in the GitHub repository.
 
-## 3. Monitoring Architecture
+Project files:
 
 ```text
-                 AWS EC2 Instance
-                        |
-             +----------+----------+
-             |                     |
-       CloudWatch Alarms      Website Health Check
-             |                     |
-       +-----+------+          Cron Scheduler
-       |            |               |
-   CPUUtilization  StatusCheckFailed |
-       |            |               |
-       +-----+------+          Health Check Log
-             |
-       Monitor EC2 Health
+app/
+├── index.html
+├── style.css
+└── script.js
 ```
 
-## 4. CloudWatch CPU Utilization Alarm
+The application was tested locally before containerization and deployment.
 
-A CloudWatch alarm was created to monitor the CPU utilization of the EC2 instance.
+Repository:
 
-### Configuration
+https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
 
-| Setting | Value |
+## 5. Step 2 — Configure the Dockerfile
+
+The application is packaged using the following Dockerfile:
+
+```dockerfile
+FROM nginx:alpine
+
+COPY app/ /usr/share/nginx/html/
+
+EXPOSE 80
+```
+
+This configuration uses Nginx as the base image and copies the website files into the Nginx document directory.
+
+## 6. Step 3 — Configure Docker Compose
+
+The project uses the following Docker Compose configuration:
+
+```yaml
+services:
+  web:
+    build: .
+    container_name: cloud-web-compose
+    ports:
+      - "80:80"
+    environment:
+      APP_ENV: production
+```
+
+### Configuration explanation
+
+- Builds the application image using the Dockerfile.
+- Creates a container named `cloud-web-compose`.
+- Maps EC2 host port 80 to container port 80.
+- Sets the application environment variable to production.
+
+## 7. Step 4 — Deploy the Application to AWS EC2
+
+The application is hosted on an Ubuntu EC2 instance.
+
+### EC2 Configuration
+
+| Setting | Configuration |
 |---|---|
-| Alarm name | `cloud-web-app-server-high-cpu` |
+| Instance Name | `cloud-web-app-server` |
+| Operating System | Ubuntu Server 24.04 |
+| Instance Type | `t3.micro` |
+| AWS Region | `us-east-1` |
+| Container Name | `cloud-web-compose` |
+| Web Server | Nginx |
+| Port Mapping | `80:80` |
+
+Docker and Docker Compose are installed on the EC2 instance.
+
+The application is started using:
+
+```bash
+sudo docker compose up -d --build
+```
+
+Check the running container:
+
+```bash
+sudo docker ps
+```
+
+Check Compose services:
+
+```bash
+sudo docker compose ps
+```
+
+## 8. Step 5 — Automate Deployment Using GitHub Actions
+
+The workflow file is:
+
+```text
+.github/workflows/ci-cd.yml
+```
+
+The deployment process follows this sequence:
+
+1. Developer updates the application.
+2. Changes are pushed to GitHub.
+3. GitHub Actions starts the workflow.
+4. CI validates application files.
+5. Docker image is built.
+6. GitHub Actions authenticates to AWS through OIDC.
+7. AWS Systems Manager sends deployment commands to EC2.
+8. EC2 pulls the latest project code.
+9. Docker Compose rebuilds and starts the application.
+10. Deployment status is checked.
+
+## 9. Step 6 — Configure CloudWatch Monitoring
+
+Amazon CloudWatch was used to monitor the EC2 instance.
+
+Two CloudWatch alarms were configured.
+
+### CPU Utilization Alarm
+
+| Setting | Configuration |
+|---|---|
+| Alarm Name | `cloud-web-app-server-high-cpu` |
 | Namespace | `AWS/EC2` |
 | Metric | `CPUUtilization` |
 | Statistic | Average |
@@ -1579,21 +1355,13 @@ A CloudWatch alarm was created to monitor the CPU utilization of the EC2 instanc
 | Threshold | Greater than 80 |
 | Evaluation | 1 out of 1 datapoint |
 
-### Purpose
+**Purpose:** Monitors EC2 CPU usage and identifies when it exceeds the configured threshold.
 
-The alarm monitors CPU usage and enters the alarm state when the configured threshold is exceeded.
+### EC2 Status Check Alarm
 
-This helps identify unusually high CPU utilization on the EC2 instance.
-
-## 5. EC2 Status Check Alarm
-
-A second CloudWatch alarm was configured to monitor EC2 instance health.
-
-### Configuration
-
-| Setting | Value |
+| Setting | Configuration |
 |---|---|
-| Alarm name | `cloud-web-app-server-status-check-failed` |
+| Alarm Name | `cloud-web-app-server-status-check-failed` |
 | Namespace | `AWS/EC2` |
 | Metric | `StatusCheckFailed` |
 | Statistic | Maximum |
@@ -1601,17 +1369,13 @@ A second CloudWatch alarm was configured to monitor EC2 instance health.
 | Threshold | Greater than or equal to 1 |
 | Evaluation | 1 out of 1 datapoint |
 
-### Purpose
+**Purpose:** Helps identify EC2 system or instance status-check failures.
 
-The `StatusCheckFailed` metric monitors EC2 system and instance status checks.
+## 10. Step 7 — Create a Website Health-Check Script
 
-A value of `1` indicates a failed status check. The alarm helps detect infrastructure or instance-level problems.
+A Bash script was created on the EC2 instance to verify whether the local Nginx application responds to HTTP requests.
 
-## 6. Website Health Check Script
-
-A Bash script was created on the EC2 instance to check whether the local Nginx web application responds to HTTP requests.
-
-### Script location
+### Script Location
 
 ```text
 /usr/local/bin/website-health-check.sh
@@ -1630,142 +1394,250 @@ else
 fi
 ```
 
-### How it works
+### Script Explanation
 
 1. Sends an HTTP request to the local website.
-2. Waits for a response, with a maximum request time of 10 seconds.
-3. Displays a success message when the HTTP request succeeds.
+2. Uses a maximum request time of 10 seconds.
+3. Displays a success message if the request succeeds.
 4. Displays a failure message and returns a non-zero exit code if the request fails.
 
-### Make the script executable
+Make the script executable:
 
 ```bash
 sudo chmod +x /usr/local/bin/website-health-check.sh
 ```
 
-### Run the health check manually
+Run the health check:
 
 ```bash
 sudo /usr/local/bin/website-health-check.sh
 ```
 
-### Example successful output
+Example successful output:
 
 ```text
-2026-10-28T06:38:02+00:00 Website UP - HTTP check passed
+Website UP - HTTP check passed
 ```
 
-The successful result confirms that the local web application responded to the HTTP check at the time of testing.
+## 11. Step 8 — Schedule Automatic Health Checks Using Cron
 
-## 7. Schedule Automatic Health Checks
+Cron was configured to run the health-check script every minute and append the results to a log file.
 
-Cron was configured to execute the health-check script every minute and append the results to a log file.
-
-### Cron configuration
+### Cron Configuration
 
 ```cron
 * * * * * /usr/local/bin/website-health-check.sh >> /var/log/website-health.log 2>&1
 ```
 
-### Log file
+### Log File
 
 ```text
 /var/log/website-health.log
 ```
 
-### Verify the scheduled job
+Verify the cron schedule:
 
 ```bash
 sudo crontab -l
 ```
 
-### View recent health-check results
+View recent health-check results:
 
 ```bash
 sudo tail -n 10 /var/log/website-health.log
 ```
 
-The log records successful checks and any HTTP check failures.
+The log records successful checks and HTTP check failures.
 
-**Note:** This script checks the website locally on the EC2 instance. It does not independently verify public internet accessibility or send notifications. CloudWatch alarm notifications require an appropriate notification action to be configured.
+**Monitoring note:** This script checks the website locally from the EC2 instance. It does not independently verify public internet accessibility or send notifications. CloudWatch alarm notifications require a notification action to be configured.
 
-## 8. Monitoring Verification
+## 12. Step 9 — Verify the Live Application
 
-The monitoring configuration was checked using the AWS Management Console and the EC2 terminal.
+The deployed application was checked using the following commands:
 
-Verification included:
-
-- CloudWatch CPU utilization alarm created.
-- CloudWatch EC2 status-check alarm created.
-- Website health-check script executed successfully.
-- HTTP check returned `Website UP - HTTP check passed`.
-- Cron schedule configured for automatic execution.
-- Health-check output written to the log file.
-
-## 9. Important Commands
-
-### Run the health check
-
-```bash
-sudo /usr/local/bin/website-health-check.sh
-```
-
-### Check the cron schedule
-
-```bash
-sudo crontab -l
-```
-
-### View health-check logs
-
-```bash
-sudo tail -n 10 /var/log/website-health.log
-```
-
-### Check Docker containers
+Check Docker containers:
 
 ```bash
 sudo docker ps
 ```
 
-### Check application logs
+Check Nginx configuration:
 
 ```bash
-sudo docker compose logs --tail=50
+sudo docker exec cloud-web-compose nginx -t
 ```
 
-## 10. Learning Outcomes
+Check local HTTP response:
 
-Through this module, I practiced:
+```bash
+curl -I http://localhost
+```
 
-- Creating Amazon CloudWatch alarms.
-- Monitoring EC2 CPU utilization.
-- Monitoring EC2 system and instance status checks.
-- Writing a Bash health-check script.
-- Testing HTTP responses using `curl`.
-- Scheduling recurring tasks using cron.
-- Recording monitoring results in a log file.
-- Understanding the difference between application health checks and infrastructure monitoring.
+Open the application in a browser:
 
-## 11. Result
+```text
+http://YOUR_CURRENT_EC2_PUBLIC_IP
+```
 
-Basic monitoring was configured for the Cloud Web App deployed on AWS EC2.
+### Verified Deployment Details
 
-CloudWatch alarms were created for CPU utilization and EC2 status-check failures. A Bash script was also created to test the local website, with cron scheduling and log output configured for recurring checks.
+| Item | Configuration |
+|---|---|
+| EC2 Instance | `cloud-web-app-server` |
+| Instance Type | `t3.micro` |
+| AWS Region | `us-east-1` |
+| Container | `cloud-web-compose` |
+| Web Server | Nginx |
+| Port Mapping | `80:80` |
+| HTTP Response at last verification | `200 OK` |
+| Deployment Status | Website opened successfully |
 
+**Important:** The EC2 public IPv4 address can change after an instance stop/start unless an Elastic IP is configured. Check the current address in the AWS EC2 console before sharing the live URL. The verified deployment uses HTTP, not HTTPS.
 
+## 13. Step 10 — Managed Database and Authentication
 
-These components provide a foundation for monitoring the health and availability of the deployed application.
+The Codomax capstone objectives include managed database and authentication integration.
+
+Amazon Cognito user pool and app-client setup was explored during the project. However, a complete working application sign-in flow and managed database connection have not been verified.
+
+Therefore, these integrations are not marked as completed deliverables in this README.
+
+They should be added to the project only after configuration and end-to-end testing are successful.
+
+## 14. Capstone Architecture Diagram
+
+```text
+             Developer
+                 |
+                 v
+          GitHub Repository
+                 |
+                 v
+           GitHub Actions
+                 |
+          +------+------+
+          |             |
+          v             v
+         CI             CD
+    Code Validation   AWS OIDC
+    Docker Build         |
+                         v
+                AWS Systems Manager
+                         |
+                         v
+                    AWS EC2
+                  Ubuntu Server
+                         |
+                         v
+                  Docker Compose
+                         |
+                         v
+                    Nginx
+                   Container
+                         |
+                         v
+                Live Web Application
+                         |
+                         v
+                CloudWatch Monitoring
+                         |
+                         v
+                Website Health Check
+```
+
+## 15. Final Capstone Deliverables
+
+| Deliverable | Project Location / Status |
+|---|---|
+| GitHub Repository | [cloud-web-app-deployment](https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment) |
+| Cloud Deployment | AWS EC2 |
+| Dockerfile | `Dockerfile` |
+| Docker Compose | `docker-compose.yml` |
+| CI/CD Workflow | `.github/workflows/ci-cd.yml` |
+| Monitoring | CloudWatch alarms |
+| Health Check | `website-health-check.sh` |
+| Cron Scheduling | Configured on EC2 |
+| Architecture Diagram | Included above |
+| Managed Database | Not yet verified |
+| Authentication | Cognito setup explored; working application flow not yet verified |
+
+## 16. Final Capstone Result
+
+The web application was successfully:
+
+- Developed using HTML, CSS, and JavaScript.
+- Stored and managed using Git and GitHub.
+- Containerized using Docker.
+- Configured using Docker Compose.
+- Deployed to AWS EC2.
+- Served using Nginx.
+- Automated using GitHub Actions.
+- Deployed remotely using AWS Systems Manager and OIDC authentication.
+- Monitored using CloudWatch alarms.
+- Checked using a scheduled Bash health-check script.
+
+The project demonstrates a practical cloud deployment workflow combining Linux, AWS, Docker, GitHub Actions, CI/CD, and basic monitoring.
 
 ---
 
-# Project Repository and Final Notes
+# Final Project Structure
 
-**GitHub:** https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
+```text
+cloud-web-app-deployment/
+│
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml
+│
+├── app/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── Dockerfile
+├── docker-compose.yml
+├── .dockerignore
+├── screenshots/
+└── README.md
+```
+
+# Technologies and Skills Practiced
+
+- Cloud Computing
+- Amazon Web Services (AWS)
+- Amazon EC2
+- AWS IAM
+- AWS Systems Manager
+- Amazon CloudWatch
+- Linux Administration
+- Networking Fundamentals
+- SSH Connectivity
+- Git and GitHub
+- HTML, CSS, and JavaScript
+- Docker
+- Docker Compose
+- Nginx
+- GitHub Actions
+- CI/CD Automation
+- AWS OIDC Authentication
+- Bash Scripting
+- Cron Scheduling
+- Application and Infrastructure Monitoring
+
+---
+
+# Project Links
+
+**GitHub Repository:**  
+https://github.com/Tejaskondhalkar-2003/cloud-web-app-deployment
+
+**Live Application:**  
+Check the current EC2 public IPv4 address in the AWS console before sharing the deployment URL.
+
+---
 
 **Author:** Tejas Kondhalkar  
-Electronics & Telecommunication Engineering Graduate
+**Qualification:** B.E. Electronics & Telecommunication Engineering  
+**Internship:** Cloud Computing & DevOps — Codomax Digital Solutions, 2026
 
-**Areas practiced:** Cloud Computing, AWS, Linux, Networking, Docker, GitHub Actions, CI/CD, and monitoring.
-
-**Security reminder:** Do not commit private keys, passwords, access tokens, or AWS credentials. Verify the current EC2 public IP before sharing the live website URL.
+**Security Reminder:** Never upload private SSH keys, passwords, access tokens, or AWS credentials to GitHub. Keep sensitive configuration secure and allow only the network access required by the application.
